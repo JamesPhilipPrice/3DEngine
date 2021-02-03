@@ -1,0 +1,7 @@
+﻿  GameEngine.cpp
+  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 22 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Engine.vcxproj -> E:\Projects\Github\3DEngine\Engine\x64\Release\Engine.exe

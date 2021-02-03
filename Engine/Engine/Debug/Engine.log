@@ -1,0 +1,6 @@
+﻿  GameEngine.cpp
+  main.cpp
+  Generating Code...
+GameEngine.obj : error LNK2019: unresolved external symbol __imp__glClear@4 referenced in function "public: void __thiscall GE::GameEngine::Draw(void)" (?Draw@GameEngine@GE@@QAEXXZ)
+GameEngine.obj : error LNK2019: unresolved external symbol __imp__glClearColor@16 referenced in function "public: void __thiscall GE::GameEngine::Draw(void)" (?Draw@GameEngine@GE@@QAEXXZ)
+E:\Projects\Github\3DEngine\Engine\Debug\Engine.exe : fatal error LNK1120: 2 unresolved externals
