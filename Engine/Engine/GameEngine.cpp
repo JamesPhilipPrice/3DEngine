@@ -19,7 +19,7 @@ namespace GE {
 		}
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 		
@@ -51,6 +51,9 @@ namespace GE {
 			std::cerr << "Warning! Unable to set vSync. Error: " << SDL_GetError() << std::endl;
 			return false;
 		}
+		std::cout<< glGetString(GL_VERSION) << std::endl;
+		triangleRen = new TriangleRenderer();
+		triangleRen->Init();
 		return true;
 	}
 
@@ -78,11 +81,15 @@ namespace GE {
 		glClearColor(0.392f, 0.584f, 0.929f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		triangleRen->Draw();
+
 		SDL_GL_SwapWindow(window);
 	}
 
 	void GameEngine::Shutdown()
 	{
+		triangleRen->Destroy();
+
 		SDL_DestroyWindow(window);
 
 		window = nullptr;

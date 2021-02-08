@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 
+#include "TriangleRenderer.h"
+
 namespace GE {
 	class GameEngine {
 	public:
@@ -21,6 +23,8 @@ namespace GE {
 	private:
 		SDL_Window* window;
 		SDL_GLContext glContext;
+
+		TriangleRenderer* triangleRen;
 	};
 
 	void DisplayInfoMessage(const char*);
