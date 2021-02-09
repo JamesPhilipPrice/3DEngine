@@ -153,12 +153,15 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="TriangleRenderer.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="OBJLoader.h" />
+    <ClInclude Include="ModelRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TriangleRenderer.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelRenderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

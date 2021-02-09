@@ -1,8 +1,7 @@
-﻿  GameEngine.cpp
-E:\Projects\Github\3DEngine\Engine\Engine\GameEngine.cpp(86,70): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+﻿  ModelRenderer.cpp
   Generating code
-  2 of 82 functions ( 2.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  522 of 592 functions (88.2%) were compiled, the rest were copied from previous compilation.
+    508 functions were new in current compilation
+    7 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Engine.vcxproj -> E:\Projects\Github\3DEngine\Engine\x64\Release\Engine.exe

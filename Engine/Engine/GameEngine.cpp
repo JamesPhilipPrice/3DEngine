@@ -61,8 +61,16 @@ namespace GE {
 			45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
 
 		//Create the triangle renderer (Debug testing)
-		triangleRen = new TriangleRenderer();
-		triangleRen->Init();
+		modelLoader = new AL::OBJLoader();
+		model = new Model(modelLoader);
+		bool result = model->LoadFromFile("assets/models/test.obj");
+		
+		if (!result) {
+			std::cerr << "Failed to load model!" << std::endl;
+		}
+
+		modelRenderer = new ModelRenderer(model);
+		modelRenderer->Init();
 		return true;
 	}
 
@@ -83,7 +91,7 @@ namespace GE {
 
 	void GameEngine::Update()
 	{
-		triangleRen->SetRot(triangleRen->GetRotX(), triangleRen->GetRotY() + 0.03, triangleRen->GetRotZ());
+		modelRenderer->SetRot(modelRenderer->GetRotX(), modelRenderer->GetRotY() + 0.03, modelRenderer->GetRotZ());
 	}
 
 	void GameEngine::Draw()
@@ -91,16 +99,17 @@ namespace GE {
 		glClearColor(0.392f, 0.584f, 0.929f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		triangleRen->Draw(cam);
+		modelRenderer->Draw(cam);
 
 		SDL_GL_SwapWindow(window);
 	}
 
 	void GameEngine::Shutdown()
 	{
-		triangleRen->Destroy();
+		modelRenderer->Destroy();
 
-		delete triangleRen;
+		delete modelRenderer;
+		delete model;
 		delete cam;
 
 		SDL_DestroyWindow(window);

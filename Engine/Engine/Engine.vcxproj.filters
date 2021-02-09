@@ -22,16 +22,34 @@
     <Filter Include="Source Files\Visual">
       <UniqueIdentifier>{a29ba877-d17d-4a91-99a1-78ed63df761f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Loaders">
+      <UniqueIdentifier>{229744d6-249b-4af6-971a-769a298b5434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers">
+      <UniqueIdentifier>{0f3f22e5-14cc-4a55-983d-88adbcdfc457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectComp">
+      <UniqueIdentifier>{5fc8f2a5-bcf5-44a7-87a0-4c6042ce3f74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectComp\Visual">
+      <UniqueIdentifier>{5cfc433d-4b78-427d-b703-c8c1797416ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
       <Filter>Source Files\MainCode</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleRenderer.h">
-      <Filter>Source Files\TestCode</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJLoader.h">
+      <Filter>Source Files\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,8 +59,11 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files\MainCode</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleRenderer.cpp">
-      <Filter>Source Files\TestCode</Filter>
+    <ClCompile Include="ModelRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
