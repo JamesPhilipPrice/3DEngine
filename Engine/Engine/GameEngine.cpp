@@ -52,6 +52,15 @@ namespace GE {
 			return false;
 		}
 		std::cout<< glGetString(GL_VERSION) << std::endl;
+
+
+		//Create the camera object
+		cam = new Camera(glm::vec3(0.0f, 0.0f, 5.0f),
+			glm::vec3(0.0f, 0.0f, 0.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f),
+			45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
+
+		//Create the triangle renderer (Debug testing)
 		triangleRen = new TriangleRenderer();
 		triangleRen->Init();
 		return true;
@@ -74,6 +83,7 @@ namespace GE {
 
 	void GameEngine::Update()
 	{
+		triangleRen->SetRot(triangleRen->GetRotX(), triangleRen->GetRotY() + 0.03, triangleRen->GetRotZ());
 	}
 
 	void GameEngine::Draw()
@@ -81,7 +91,7 @@ namespace GE {
 		glClearColor(0.392f, 0.584f, 0.929f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		triangleRen->Draw();
+		triangleRen->Draw(cam);
 
 		SDL_GL_SwapWindow(window);
 	}
@@ -89,6 +99,9 @@ namespace GE {
 	void GameEngine::Shutdown()
 	{
 		triangleRen->Destroy();
+
+		delete triangleRen;
+		delete cam;
 
 		SDL_DestroyWindow(window);
 

@@ -19,6 +19,9 @@
     <Filter Include="Source Files\TestCode">
       <UniqueIdentifier>{0bddce36-a94f-4ee6-a9f1-cf3497b76b1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Visual">
+      <UniqueIdentifier>{a29ba877-d17d-4a91-99a1-78ed63df761f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -26,6 +29,9 @@
     </ClInclude>
     <ClInclude Include="TriangleRenderer.h">
       <Filter>Source Files\TestCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Visual</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

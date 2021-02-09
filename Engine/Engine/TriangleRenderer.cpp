@@ -1,5 +1,6 @@
 #include "TriangleRenderer.h"
 #include <iostream>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace GE {
 	GLfloat vertexData[] = {
@@ -10,6 +11,9 @@ namespace GE {
 
 	TriangleRenderer::TriangleRenderer()
 	{
+		posX = posY = posZ = 0.0f;
+		rotX = rotY = rotZ = 0.0f;
+		scaleX = scaleY = scaleZ = 1.0f;
 	}
 
 	TriangleRenderer::~TriangleRenderer()
@@ -39,8 +43,13 @@ namespace GE {
 		const GLchar* V_ShaderCode[] = {
 			"#version 140\n"
 			"in vec2 vertexPos2D;\n"
+			"uniform mat4 transform;\n"
+			"uniform mat4 view;\n"
+			"uniform mat4 projection;\n"
 			"void main() {\n"
-			"gl_Position = vec4(vertexPos2D.x, vertexPos2D.y, 0, 1);\n"
+			"vec4 v = vec4(vertexPos2D.x, vertexPos2D.y, 0, 1);\n"
+			"v = projection * view * transform * v;\n"
+			"gl_Position = v;\n"
 			"}\n" 
 		};
 
@@ -102,6 +111,10 @@ namespace GE {
 			std::cerr << "Problem getting vertex2DPos" << std::endl;
 		}
 
+		transformUniformID = glGetUniformLocation(programId, "transform");
+		viewUniformID = glGetUniformLocation(programId, "view");
+		projectionUniformID = glGetUniformLocation(programId, "projection");
+
 		glGenBuffers(1, &vboTriangle);
 		glBindBuffer(GL_ARRAY_BUFFER, vboTriangle);
 
@@ -112,9 +125,24 @@ namespace GE {
 	{
 	}
 
-	void TriangleRenderer::Draw()
+	void TriangleRenderer::Draw(Camera* _cam)
 	{
+		glm::mat4 transformationMat = glm::mat4(1.0f);
+
+		transformationMat = glm::translate(transformationMat, glm::vec3(posX, posY, posZ));
+		transformationMat = glm::rotate(transformationMat, glm::radians(rotX), glm::vec3(1.0f, 0.0f, 0.0f));
+		transformationMat = glm::rotate(transformationMat, glm::radians(rotY), glm::vec3(0.0f, 1.0f, 0.0f));
+		transformationMat = glm::rotate(transformationMat, glm::radians(rotZ), glm::vec3(0.0f, 0.0f, 1.0f));
+		transformationMat = glm::scale(transformationMat, glm::vec3(scaleX, scaleY, scaleZ));
+
+		glm::mat4 viewMat = _cam->GetViewMatrix();
+		glm::mat4 projectionMat = _cam->GetProjectMatrix();
+
 		glUseProgram(programId);
+
+		glUniformMatrix4fv(transformUniformID, 1, GL_FALSE, glm::value_ptr(transformationMat));
+		glUniformMatrix4fv(viewUniformID, 1, GL_FALSE, glm::value_ptr(viewMat));
+		glUniformMatrix4fv(projectionUniformID, 1, GL_FALSE, glm::value_ptr(projectionMat));
 
 		glVertexAttribPointer(vertexPos2DLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), nullptr);
 
