@@ -91,6 +91,14 @@ namespace GE {
 
 	void GameEngine::Update()
 	{
+		frameCount++;
+		if (SDL_GetTicks() - lastCapUpdate >= 1000) {
+			float avgFPS = frameCount / ((SDL_GetTicks() - lastCapUpdate) / 1000.0f);
+			std::string fpsString = "FPS: " + std::to_string(avgFPS);
+			SDL_SetWindowTitle(window, fpsString.c_str());
+			frameCount = 0;
+			lastCapUpdate = SDL_GetTicks();
+		}
 		modelRenderer->SetRot(modelRenderer->GetRotX(), modelRenderer->GetRotY() + 0.03, modelRenderer->GetRotZ());
 	}
 

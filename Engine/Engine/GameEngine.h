@@ -30,6 +30,9 @@ namespace GE {
 
 		Camera* cam;
 		
+		unsigned int lastCapUpdate = 0;
+		int frameCount = 0;
+
 		Model* model;
 		ModelRenderer* modelRenderer;
 	};
