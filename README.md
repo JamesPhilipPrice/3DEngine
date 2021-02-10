@@ -1,9 +1,12 @@
 # 3DEngine
 A 3D game engine using OpenGL and SDL
 
-## Project component implementation plan
-### Game Theme
+## Game Theme
 - WWII
+## Level description
+There will be a small village with some basic buildings in it, with some larger, open spaces and wide roads.
+The player will be able to run around and shoot guns, as well as approach tanks and enter them to drive them around in 3rd person. 
+## Project component implementation plan
 ### Stage One (Mandatory components)
 - FPS camera
 - Loading Objects from file (Can use external modules)
@@ -23,10 +26,6 @@ A 3D game engine using OpenGL and SDL
 - Lighting/Shadows
 - Reflections
 - Particle systems
-
-Level description:
-There will be a small village with some basic buildings in it, with some larger, open spaces and wide roads.
-The player will be able to run around and shoot guns, as well as approach tanks and enter them to drive them around in 3rd person. 
 
 ## Project start: 03/02/21
 I have managed to get the project set up and a basic scene rendered without any objects. There is currently an issue with rendering a triangle (nothing is visible (Fixed: 08/02/21))
