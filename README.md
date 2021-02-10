@@ -1,6 +1,18 @@
 # 3DEngine
 A 3D game engine using OpenGL and SDL
-Game theme: WWII
+
+## Project component implementation plan
+### Game Theme
+- WWII
+### Stage_One (Mandatory components)
+- FPS camera
+- Loading Objects from file (Can use external modules)
+- 5 or more static models
+- Simple terrain (like a plane)
+- Movable player
+- Textures
+- Skybox
+
 
 Level description:
 There will be a small village with some basic buildings in it, with some larger, open spaces and wide roads.
