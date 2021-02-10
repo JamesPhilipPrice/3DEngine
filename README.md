@@ -4,7 +4,7 @@ A 3D game engine using OpenGL and SDL
 ## Project component implementation plan
 ### Game Theme
 - WWII
-### Stage_One (Mandatory components)
+### Stage One (Mandatory components)
 - FPS camera
 - Loading Objects from file (Can use external modules)
 - 5 or more static models
@@ -12,7 +12,17 @@ A 3D game engine using OpenGL and SDL
 - Movable player
 - Textures
 - Skybox
-
+### Stage Two
+- Height map based terrain
+- Dynamic models
+### Stage Three
+- Load 3D models from file without external modules like Assimp
+- HUD
+### Stage Four
+- Bump mapping
+- Lighting/Shadows
+- Reflections
+- Particle systems
 
 Level description:
 There will be a small village with some basic buildings in it, with some larger, open spaces and wide roads.
