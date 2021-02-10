@@ -24,3 +24,7 @@ Initial testing:
 Updated content:
 I have managed to get the engine to load models from OBJ files (without using Assimp and instead using my own code) and there is a basic 3D game scene with a rotating monkey model from blender.
 <img src="Documentation_Assets/monkey.gif?raw=true"/>
+
+## Update: 10/02/21
+I have managed to implement texture co-ordinate loading into my OBJ loader class and have implemented the textures into the model renderer. I tested everything was loading correctly by putting little up arrows on the texture where the eyes are and loaded that texture (wood.png).
+<img src="Documentation_Assets/monkey_textured.gif?raw=true"/>

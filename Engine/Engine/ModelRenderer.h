@@ -5,6 +5,7 @@
 #include <glm/glm.hpp>
 #include "Camera.h"
 #include "Model.h"
+#include "Texture.h"
 
 namespace GE {
 	class ModelRenderer {
@@ -73,10 +74,14 @@ namespace GE {
 			scaleY = _y;
 			scaleZ = _z;
 		}
+
+		void SetMaterial(Texture* _tex) {
+			material = _tex;
+		}
 	private:
 		GLuint programId;
 		GLint vertexPos3DLocation;
-		GLint vertexFragmentColourLocation;
+		GLint vertexUVLocation;
 		GLuint vboModel;
 
 		float posX, posY, posZ;
@@ -86,7 +91,10 @@ namespace GE {
 		GLuint transformUniformID;
 		GLuint viewUniformID;
 		GLuint projectionUniformID;
+		GLuint samplerID;
 
 		Model* model;
+
+		Texture* material;
 	};
 }

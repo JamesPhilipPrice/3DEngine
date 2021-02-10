@@ -4,11 +4,11 @@
 
 namespace GE {
 
-	Vertex vertexData[] = {
+	/*Vertex vertexData[] = {
 		Vertex(-1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f),
 		Vertex(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f),
 		Vertex(0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f)
-	};
+	};*/
 
 	ModelRenderer::ModelRenderer(Model* _model)
 	{
@@ -46,8 +46,8 @@ namespace GE {
 		const GLchar* V_ShaderCode[] = {
 			"#version 140\n"
 			"in vec3 vertexPos3D;\n"
-			"in vec4 vColour;\n"
-			"out vec4 fColour;\n"
+			"in vec2 vUV;\n"
+			"out vec2 uv;\n"
 			"uniform mat4 transform;\n"
 			"uniform mat4 view;\n"
 			"uniform mat4 projection;\n"
@@ -55,7 +55,7 @@ namespace GE {
 			"vec4 v = vec4(vertexPos3D.xyz, 1);\n"
 			"v = projection * view * transform * v;\n"
 			"gl_Position = v;\n"
-			"fColour = vColour;\n"
+			"uv = vUV;\n"
 			"}\n" 
 		};
 
@@ -77,11 +77,12 @@ namespace GE {
 
 		const GLchar* F_ShaderCode[] = {
 			"#version 140\n"
-			"in vec4 fColour;\n"
+			"in vec2 uv;\n"
+			"uniform sampler2D sampler;\n"
 			"out vec4 fragmentColour;\n"
 			"void main()\n"
 			"{\n"
-			"fragmentColour = fColour;\n"
+			"fragmentColour = texture(sampler, uv).rgba;\n"
 			"}\n"
 		};
 
@@ -118,15 +119,16 @@ namespace GE {
 			std::cerr << "Problem getting vertexPos3D" << std::endl;
 		}
 
-		vertexFragmentColourLocation = glGetAttribLocation(programId, "vColour");
+		vertexUVLocation = glGetAttribLocation(programId, "vUV");
 
-		if (vertexFragmentColourLocation == -1) {
-			std::cerr << "Problem getting vColour" << std::endl;
+		if (vertexUVLocation == -1) {
+			std::cerr << "Problem getting vUV" << std::endl;
 		}
 
 		transformUniformID = glGetUniformLocation(programId, "transform");
 		viewUniformID = glGetUniformLocation(programId, "view");
 		projectionUniformID = glGetUniformLocation(programId, "projection");
+		samplerID = glGetUniformLocation(programId, "sampler");
 
 		glGenBuffers(1, &vboModel);
 		glBindBuffer(GL_ARRAY_BUFFER, vboModel);
@@ -140,6 +142,8 @@ namespace GE {
 
 	void ModelRenderer::Draw(Camera* _cam)
 	{
+		glEnable(GL_CULL_FACE);
+
 		glm::mat4 transformationMat = glm::mat4(1.0f);
 
 		transformationMat = glm::translate(transformationMat, glm::vec3(posX, posY, posZ));
@@ -158,20 +162,27 @@ namespace GE {
 		glUniformMatrix4fv(projectionUniformID, 1, GL_FALSE, glm::value_ptr(projectionMat));
 
 		glVertexAttribPointer(vertexPos3DLocation, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *) offsetof(Vertex, x));
-		glVertexAttribPointer(vertexFragmentColourLocation, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
-
-		glEnableVertexAttribArray(vertexFragmentColourLocation);
-
+		
 		glEnableVertexAttribArray(vertexPos3DLocation);
+		
+		glVertexAttribPointer(vertexUVLocation, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, u));
+
+		glEnableVertexAttribArray(vertexUVLocation);
 
 		glBindBuffer(GL_ARRAY_BUFFER, vboModel);
+
+		glActiveTexture(GL_TEXTURE0);
+		glUniform1i(samplerID, 0);
+		glBindTexture(GL_TEXTURE_2D, material->GetTextureName());
 
 		glDrawArrays(GL_TRIANGLES, 0, model->GetNumVerticies());
 
 		glDisableVertexAttribArray(vertexPos3DLocation);
-		glDisableVertexAttribArray(vertexFragmentColourLocation);
+		glDisableVertexAttribArray(vertexUVLocation);
 
 		glUseProgram(0);
+		
+		glDisable(GL_CULL_FACE);
 	}
 
 	void ModelRenderer::Destroy()

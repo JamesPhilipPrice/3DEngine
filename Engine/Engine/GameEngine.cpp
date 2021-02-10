@@ -63,14 +63,17 @@ namespace GE {
 		//Create the triangle renderer (Debug testing)
 		modelLoader = new AL::OBJLoader();
 		model = new Model(modelLoader);
-		bool result = model->LoadFromFile("assets/models/test.obj");
+		model->LoadFromFile("assets/models/test.obj");
 		
-		if (!result) {
+		if (model->GetVerticies() == nullptr) {
 			std::cerr << "Failed to load model!" << std::endl;
 		}
 
+		material = new Texture("assets/textures/wood.png");
+
 		modelRenderer = new ModelRenderer(model);
 		modelRenderer->Init();
+		modelRenderer->SetMaterial(material);
 		return true;
 	}
 
@@ -105,7 +108,8 @@ namespace GE {
 	void GameEngine::Draw()
 	{
 		glClearColor(0.392f, 0.584f, 0.929f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		modelRenderer->Draw(cam);
 

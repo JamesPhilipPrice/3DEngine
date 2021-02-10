@@ -34,6 +34,7 @@ namespace GE {
 		int frameCount = 0;
 
 		Model* model;
+		Texture* material;
 		ModelRenderer* modelRenderer;
 	};
 
