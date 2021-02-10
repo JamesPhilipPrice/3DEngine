@@ -19,6 +19,7 @@ I have managed to get the engine to start rendering in 3D. Currently there is a 
 ##Update: 09/02/21 (Late night)
 Initial testing:
 <img src="Documentation_Assets/initialFPS.png?raw=true"/>
+
 Updated content:
 I have managed to get the engine to load models from OBJ files (without using Assimp and instead using my own code) and there is a basic 3D game scene with a rotating monkey model from blender.
 <img src="Documentation_Assets/monkey.gif?raw=true"/>
