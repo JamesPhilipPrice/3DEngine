@@ -33,9 +33,30 @@ namespace GE {
 		unsigned int lastCapUpdate = 0;
 		int frameCount = 0;
 
+		//Testing model stuff
 		Model* model;
 		Texture* material;
 		ModelRenderer* modelRenderer;
+
+		//Ground stuff
+		Model* ground;
+		Texture* groundMat;
+		ModelRenderer* groundRenderer;
+
+		//House One
+		Model* houseOne;
+		Texture* houseOneMat;
+		ModelRenderer* houseOneRenderer;
+
+		//House Two
+		Model* houseTwo;
+		Texture* houseTwoMat;
+		ModelRenderer* houseTwoRenderer;
+
+		//House Three
+		Model* houseThree;
+		Texture* houseThreeMat;
+		ModelRenderer* houseThreeRenderer;
 	};
 
 	void DisplayInfoMessage(const char*);

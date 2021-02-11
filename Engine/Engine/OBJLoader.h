@@ -88,7 +88,7 @@ namespace AL {
 					tempFaceBuffer.push_back(tempVertPointOne);
 					tempFaceBuffer.push_back(tempVertPointTwo);
 					tempFaceBuffer.push_back(tempVertPointThree);
-					
+
 					faceBuffer.push_back(tempFaceBuffer);
 				}
 			}

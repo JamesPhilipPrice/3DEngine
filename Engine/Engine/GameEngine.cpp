@@ -55,13 +55,15 @@ namespace GE {
 
 
 		//Create the camera object
-		cam = new Camera(glm::vec3(0.0f, 0.0f, 5.0f),
-			glm::vec3(0.0f, 0.0f, 0.0f),
+		cam = new Camera(glm::vec3(0.0f, 5.0f, 5.0f),
+			glm::vec3(0.0f, 5.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f),
 			45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
 
 		//Create the triangle renderer (Debug testing)
 		modelLoader = new AL::OBJLoader();
+
+		//Debug Model
 		model = new Model(modelLoader);
 		model->LoadFromFile("assets/models/test.obj");
 		
@@ -70,10 +72,33 @@ namespace GE {
 		}
 
 		material = new Texture("assets/textures/wood.png");
-
 		modelRenderer = new ModelRenderer(model);
 		modelRenderer->Init();
 		modelRenderer->SetMaterial(material);
+		modelRenderer->SetPos(0.0f, 5.0f, 0.0f);
+		
+		//Ground model
+		ground = new Model(modelLoader);
+		ground->LoadFromFile("assets/models/Plane.obj");
+		if (ground->GetVerticies() == nullptr) {
+			std::cerr << "Failed to load ground model!" << std::endl;
+		}
+		groundMat = new Texture("assets/textures/Grass.jpg");
+		groundRenderer = new ModelRenderer(ground);
+		groundRenderer->Init();
+		groundRenderer->SetMaterial(groundMat);
+
+		//House One model
+		houseOne = new Model(modelLoader);
+		houseOne->LoadFromFile("assets/models/House_One.obj");
+		if (houseOne->GetVerticies() == nullptr) {
+			std::cerr << "Failed to load houseOne model!" << std::endl;
+		}
+		houseOneMat = new Texture("assets/textures/HousesONE.jpg");
+		houseOneRenderer = new ModelRenderer(houseOne);
+		houseOneRenderer->Init();
+		houseOneRenderer->SetMaterial(houseOneMat);
+		houseOneRenderer->SetPos(-2, 0, -10);
 		return true;
 	}
 
@@ -102,7 +127,8 @@ namespace GE {
 			frameCount = 0;
 			lastCapUpdate = SDL_GetTicks();
 		}
-		modelRenderer->SetRot(modelRenderer->GetRotX(), modelRenderer->GetRotY() + 0.03, modelRenderer->GetRotZ());
+		//modelRenderer->SetRot(modelRenderer->GetRotX(), modelRenderer->GetRotY() + 0.03, modelRenderer->GetRotZ());
+		houseOneRenderer->SetRot(houseOneRenderer->GetRotX(), houseOneRenderer->GetRotY() + 0.03, houseOneRenderer->GetRotZ());
 	}
 
 	void GameEngine::Draw()
@@ -111,7 +137,9 @@ namespace GE {
 		glEnable(GL_DEPTH_TEST);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		modelRenderer->Draw(cam);
+		//modelRenderer->Draw(cam);
+		//groundRenderer->Draw(cam);
+		houseOneRenderer->Draw(cam);
 
 		SDL_GL_SwapWindow(window);
 	}
@@ -119,9 +147,15 @@ namespace GE {
 	void GameEngine::Shutdown()
 	{
 		modelRenderer->Destroy();
+		groundRenderer->Destroy();
+		houseOneRenderer->Destroy();
 
 		delete modelRenderer;
 		delete model;
+		delete groundRenderer;
+		delete ground;
+		delete houseOneRenderer;
+		delete houseOne;
 		delete cam;
 
 		SDL_DestroyWindow(window);

@@ -4,12 +4,6 @@
 
 namespace GE {
 
-	/*Vertex vertexData[] = {
-		Vertex(-1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f),
-		Vertex(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f),
-		Vertex(0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f)
-	};*/
-
 	ModelRenderer::ModelRenderer(Model* _model)
 	{
 		posX = posY = posZ = 0.0f;

@@ -1,4 +1,3 @@
-﻿  Model.cpp
-E:\Projects\Github\3DEngine\Engine\Engine\Model.cpp(12,18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Model.cpp(17,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+﻿  GameEngine.cpp
+E:\Projects\Github\3DEngine\Engine\Engine\GameEngine.cpp(131,85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Engine.vcxproj -> E:\Projects\Github\3DEngine\Engine\x64\Debug\Engine.exe
