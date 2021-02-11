@@ -2,7 +2,7 @@
 A 3D game engine using OpenGL and SDL
 
 ## Game Theme
-- WWII
+- WWI
 ## Level description
 There will be a small village with some basic buildings in it, with some larger, open spaces and wide roads.
 The player will be able to run around and shoot guns, as well as approach tanks and enter them to drive them around in 3rd person. 
