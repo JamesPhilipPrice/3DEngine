@@ -37,7 +37,7 @@ The issue was caused by not having the GL context versions set correctly. The is
 I have managed to get the engine to start rendering in 3D. Currently there is a little red triangle that spins arround on the Y axis.
 <img src="Documentation_Assets/triangle_spin.gif?raw=true"/>
 
-##Update: 09/02/21 (Late night)
+## Update: 09/02/21 (Late night)
 Initial testing:
 
 <img src="Documentation_Assets/initialFPS.png?raw=true"/>
