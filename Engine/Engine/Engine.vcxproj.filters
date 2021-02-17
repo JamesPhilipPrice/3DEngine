@@ -54,6 +54,12 @@
     <ClInclude Include="Texture.h">
       <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClInclude>
+    <ClInclude Include="SkyBoxRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUtility.h">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -69,6 +75,12 @@
       <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBoxRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUtility.cpp">
       <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClCompile>
   </ItemGroup>

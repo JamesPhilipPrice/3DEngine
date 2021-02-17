@@ -49,3 +49,6 @@ I have managed to get the engine to load models from OBJ files (without using As
 ## Update: 10/02/21
 I have managed to implement texture co-ordinate loading into my OBJ loader class and have implemented the textures into the model renderer. I tested everything was loading correctly by putting little up arrows on the texture where the eyes are and loaded that texture (wood.png).
 <img src="Documentation_Assets/monkey_textured.gif?raw=true"/>
+
+## Update: 17/02/21
+I have made some updates to the model renderer and have gotten a skybox initially implemented, although there is currently a bug making it render black squares instead of textures

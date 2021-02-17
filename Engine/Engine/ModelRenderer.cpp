@@ -155,15 +155,16 @@ namespace GE {
 		glUniformMatrix4fv(viewUniformID, 1, GL_FALSE, glm::value_ptr(viewMat));
 		glUniformMatrix4fv(projectionUniformID, 1, GL_FALSE, glm::value_ptr(projectionMat));
 
-		glVertexAttribPointer(vertexPos3DLocation, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *) offsetof(Vertex, x));
 		
 		glEnableVertexAttribArray(vertexPos3DLocation);
-		
-		glVertexAttribPointer(vertexUVLocation, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, u));
+
+		glBindBuffer(GL_ARRAY_BUFFER, vboModel);
+
+		glVertexAttribPointer(vertexPos3DLocation, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, x));
 
 		glEnableVertexAttribArray(vertexUVLocation);
 
-		glBindBuffer(GL_ARRAY_BUFFER, vboModel);
+		glVertexAttribPointer(vertexUVLocation, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, u));
 
 		glActiveTexture(GL_TEXTURE0);
 		glUniform1i(samplerID, 0);
@@ -175,6 +176,7 @@ namespace GE {
 		glDisableVertexAttribArray(vertexUVLocation);
 
 		glUseProgram(0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		
 		glDisable(GL_CULL_FACE);
 	}

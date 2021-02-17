@@ -1,6 +1,9 @@
 #include "GameEngine.h"
 #include <iostream>
 
+#define WIDTH 640
+#define HEIGHT 480
+
 namespace GE {
 	GameEngine::GameEngine()
 	{
@@ -23,7 +26,7 @@ namespace GE {
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 		
-		window = SDL_CreateWindow("SDL and OpenGL", 50, 50, 640, 480, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("SDL and OpenGL", 50, 50, WIDTH, HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 
 		//Check if the window was created
 		if (window == nullptr) {
@@ -58,7 +61,7 @@ namespace GE {
 		cam = new Camera(glm::vec3(0.0f, 5.0f, 5.0f),
 			glm::vec3(0.0f, 5.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f),
-			45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
+			90.0f, 640.0f / 480.0f, 0.1f, 100.0f);
 
 		//Create the triangle renderer (Debug testing)
 		modelLoader = new AL::OBJLoader();
@@ -98,7 +101,15 @@ namespace GE {
 		houseOneRenderer = new ModelRenderer(houseOne);
 		houseOneRenderer->Init();
 		houseOneRenderer->SetMaterial(houseOneMat);
-		houseOneRenderer->SetPos(-2, 0, -10);
+		houseOneRenderer->SetPos(0, 0, -10);
+
+		//Initialise skybox
+		skybox = new SkyboxRenderer("assets/textures/skybox/front.jpg",
+			"assets/textures/skybox/back.jpg",
+			"assets/textures/skybox/right.jpg",
+			"assets/textures/skybox/left.jpg",
+			"assets/textures/skybox/top.jpg",
+			"assets/textures/skybox/bottom.jpg");
 		return true;
 	}
 
@@ -115,6 +126,92 @@ namespace GE {
 			return false;
 		}
 		return true;
+	}
+
+	void GameEngine::ProcessInput()
+	{
+		//Process mouse input
+		const float camSpeed = 0.2f;
+		const float mouseSens = 0.1f;
+
+		//Get mouse x and y
+		int mouseX, mouseY;
+		SDL_GetMouseState(&mouseX, &mouseY);
+
+		float diffX = mouseX - cam->GetOldMouseX();
+		float diffY = cam->GetOldMouseY() - mouseY;
+
+		cam->SetYaw((cam->GetYaw() + diffX) * mouseSens);
+		cam->SetPitch((cam->GetPitch() + diffY) * mouseSens);
+
+		glm::vec3 direction;
+		direction.x = cos(glm::radians(cam->GetYaw())) * cos(glm::radians(cam->GetPitch()));
+		direction.y = sin(glm::radians(cam->GetPitch()));
+		direction.z = sin(glm::radians(cam->GetYaw())) * cos(glm::radians(cam->GetPitch()));
+		cam->SetTarget(glm::normalize(direction));
+
+		//Keyboard input process
+		bool keyState[4] = { 0, 0, 0, 0 };
+		int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3;
+
+		SDL_Event e;
+		if (SDL_PollEvent(&e)) {
+			if (e.type == SDL_KEYDOWN) {
+				switch (e.key.keysym.scancode) {
+				case SDL_SCANCODE_W:
+					keyState[UP] = true;
+					break;
+				case SDL_SCANCODE_S:
+					keyState[DOWN] = true;
+					break;
+				case SDL_SCANCODE_A:
+					keyState[LEFT] = true;
+					break;
+				case SDL_SCANCODE_D:
+					keyState[RIGHT] = true;
+					break;
+				default:
+					break;
+				}
+			}
+			if (e.type == SDL_KEYUP) {
+				switch (e.key.keysym.scancode) {
+				case SDL_SCANCODE_W:
+					keyState[UP] = false;
+					break;
+				case SDL_SCANCODE_S:
+					keyState[DOWN] = false;
+					break;
+				case SDL_SCANCODE_A:
+					keyState[LEFT] = false;
+					break;
+				case SDL_SCANCODE_D:
+					keyState[RIGHT] = false;
+					break;
+				default:
+					break;
+				}
+			}
+
+			if (keyState[UP]) {
+				cam->SetPos(cam->GetPos() + cam->GetTarget() * camSpeed);
+			}
+			if (keyState[DOWN]) {
+				cam->SetPos(cam->GetPos() - cam->GetTarget() * camSpeed);
+			}
+			if (keyState[LEFT]) {
+				cam->SetPos(cam->GetPos() - glm::normalize(glm::cross(cam->GetTarget(), cam->GetUpDir())) * camSpeed);
+			}
+			if (keyState[UP]) {
+				cam->SetPos(cam->GetPos() + glm::normalize(glm::cross(cam->GetTarget(), cam->GetUpDir())) * camSpeed);
+			}
+
+			cam->UpdateCameraMatricies();
+
+			cam->SetOldMouseX(WIDTH/2);
+			cam->SetOldMouseY(HEIGHT/2);
+			//std::cout << "Cam Pitch: " << cam->GetPitch() << ", Cam Yaw: " << cam->GetYaw() << std::endl;
+		}
 	}
 
 	void GameEngine::Update()
@@ -137,8 +234,11 @@ namespace GE {
 		glEnable(GL_DEPTH_TEST);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		//Draw the skybox firsty as it must always be at the back
+		skybox->Draw(cam);
+
 		//modelRenderer->Draw(cam);
-		//groundRenderer->Draw(cam);
+		groundRenderer->Draw(cam);
 		houseOneRenderer->Draw(cam);
 
 		SDL_GL_SwapWindow(window);
@@ -150,6 +250,9 @@ namespace GE {
 		groundRenderer->Destroy();
 		houseOneRenderer->Destroy();
 
+		skybox->Destroy();
+
+		delete skybox;
 		delete modelRenderer;
 		delete model;
 		delete groundRenderer;

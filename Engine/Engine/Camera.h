@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -16,30 +17,51 @@ namespace GE {
 			farClip = _far;
 
 			UpdateCameraMatricies();
+			SDL_GetMouseState(&oldMouseX, &oldMouseY);
 		}
 		~Camera() {
 
 		}
 
 		//Accessor methods
-		float getPosX() {
+		float GetPosX() {
 			return pos.x;
 		}
 
-		float getPosY() {
+		float GetPosY() {
 			return pos.y;
 		}
 
-		float getPosZ() {
+		float GetPosZ() {
 			return pos.z;
 		}
 
-		glm::vec3 getTarget() {
+		glm::vec3 GetPos() {
+			return pos;
+		}
+
+		glm::vec3 GetTarget() {
 			return target;
 		}
 
 		glm::vec3 GetUpDir() {
 			return up;
+		}
+
+		float GetPitch() {
+			return pitch;
+		}
+
+		float GetYaw() {
+			return yaw;
+		}
+
+		float GetOldMouseX() {
+			return oldMouseX;
+		}
+
+		float GetOldMouseY() {
+			return oldMouseY;
 		}
 
 		glm::mat4 GetViewMatrix() {
@@ -71,6 +93,11 @@ namespace GE {
 			UpdateCameraMatricies();
 		}
 
+		void SetPos(glm::vec3 _newPos) {
+			pos = _newPos;
+			UpdateCameraMatricies();
+		}
+
 		void SetTarget(glm::vec3 _newTarget) {
 			target = _newTarget;
 
@@ -80,6 +107,29 @@ namespace GE {
 		void SetUpDir(glm::vec3 _newUp) {
 			up = _newUp;
 			UpdateCameraMatricies();
+		}
+
+		void SetPitch(float _newPitch) {
+			pitch = _newPitch;
+
+			if (pitch > 70.0f) {
+				pitch = 70.0f;
+			}
+			if (pitch < -70.0f) {
+				pitch = -70.0f;
+			}
+		}
+
+		void SetYaw(float _newYaw) {
+			yaw = _newYaw;
+		}
+
+		void SetOldMouseX(float _newOldMouseX) {
+			oldMouseX = _newOldMouseX;
+		}
+
+		void SetOldMouseY(float _newOldMouseY) {
+			oldMouseY = _newOldMouseY;
 		}
 
 		void SetFOV(float _newFOV) {
@@ -102,6 +152,11 @@ namespace GE {
 			UpdateCameraMatricies();
 		}
 
+		void UpdateCameraMatricies() {
+			viewMatrix = glm::lookAt(pos, pos + target, up);
+			projectionMatrix = glm::perspective(glm::radians(fovY), aspectRatio, nearClip, farClip);
+		}
+
 	private:
 		glm::vec3 pos;
 		glm::vec3 target;
@@ -112,12 +167,14 @@ namespace GE {
 		float nearClip;
 		float farClip;
 
+		//Pitch and yaw
+		float pitch = 0.0f;
+		float yaw = -90.0f;
+
+		//Mouse related variables
+		int oldMouseX, oldMouseY;
+
 		glm::mat4 viewMatrix;
 		glm::mat4 projectionMatrix;
-
-		void UpdateCameraMatricies() {
-			viewMatrix = glm::lookAt(pos, target, up);
-			projectionMatrix = glm::perspective(glm::radians(fovY), aspectRatio, nearClip, farClip);
-		}
 	};
 }

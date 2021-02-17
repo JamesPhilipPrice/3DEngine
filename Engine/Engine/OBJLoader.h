@@ -102,7 +102,7 @@ namespace AL {
 				_targetUVContainer->push_back(vertexUVBuffer[faceBuffer[i][2][1]-1]);
 			}
 
-
+			fileBuffer.clear();
 			return true;
 		}
 	};

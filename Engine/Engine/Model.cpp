@@ -19,7 +19,7 @@ namespace GE {
 		verticies = new Vertex[numVerticies];
 
 		std::copy(loadedVerticies.begin(), loadedVerticies.end(), verticies);
-
+		std::cout << "Loaded " << _filename << " with " << loadedVerticies.size() << " verts!" << std::endl;
 		return true;
 	}
 }

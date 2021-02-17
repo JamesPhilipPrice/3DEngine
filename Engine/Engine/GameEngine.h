@@ -6,6 +6,7 @@
 #include "ModelRenderer.h"
 #include "Model.h"
 #include "OBJLoader.h"
+#include "SkyBoxRenderer.h"
 
 namespace GE {
 	class GameEngine {
@@ -16,6 +17,7 @@ namespace GE {
 
 		bool init();
 		bool keep_running();
+		void ProcessInput();
 		void Update();
 		void Draw();
 		void Shutdown();
@@ -27,6 +29,7 @@ namespace GE {
 		SDL_GLContext glContext;
 
 		AL::OBJLoader* modelLoader;
+		AL::OBJLoader* modelLoaderTwo;
 
 		Camera* cam;
 		
@@ -57,6 +60,9 @@ namespace GE {
 		Model* houseThree;
 		Texture* houseThreeMat;
 		ModelRenderer* houseThreeRenderer;
+
+		//Skybox
+		SkyboxRenderer* skybox;
 	};
 
 	void DisplayInfoMessage(const char*);

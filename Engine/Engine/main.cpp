@@ -13,6 +13,7 @@ int main() {
 
 	while (ge.keep_running()) {
 		ge.Update();
+		ge.ProcessInput();
 		ge.Draw();
 	}
 
