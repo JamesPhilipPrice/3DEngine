@@ -52,3 +52,6 @@ I have managed to implement texture co-ordinate loading into my OBJ loader class
 
 ## Update: 17/02/21
 I have made some updates to the model renderer and have gotten a skybox initially implemented, although there is currently a bug making it render black squares instead of textures
+
+## Update: 23/02/21
+I have gotten a basic scene put together and implemented into the game with a flat terrain and textured models. There is a skybox but a problem with rendering the textures still exists

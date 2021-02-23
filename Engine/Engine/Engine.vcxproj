@@ -156,6 +156,9 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="ModelRenderer.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneOne.h" />
     <ClInclude Include="ShaderUtility.h" />
     <ClInclude Include="SkyBoxRenderer.h" />
     <ClInclude Include="Texture.h" />
@@ -165,6 +168,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelRenderer.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneOne.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="SkyBoxRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />

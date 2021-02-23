@@ -7,6 +7,8 @@
 #include "Model.h"
 #include "OBJLoader.h"
 #include "SkyBoxRenderer.h"
+#include "SceneManager.h"
+#include "SceneOne.h"
 
 namespace GE {
 	class GameEngine {
@@ -32,7 +34,13 @@ namespace GE {
 		AL::OBJLoader* modelLoaderTwo;
 
 		Camera* cam;
-		
+
+		SceneManager* sceneManager;
+		Scene* sceneOne;
+
+		unsigned int lastTick;
+		float deltaTime;
+
 		unsigned int lastCapUpdate = 0;
 		int frameCount = 0;
 

@@ -21,60 +21,61 @@ namespace GE {
 			z = _z;
 		}
 	};
-	const float cubemapSize = 1.0f;
+	const float SIDE = 1.0f;
 	CubeVertex cubeVertices[] = {
-		CubeVertex(-cubemapSize, -cubemapSize, -cubemapSize),
-		CubeVertex(-cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, -cubemapSize),
+		// Front face
+		CubeVertex(-SIDE,  SIDE, -SIDE),
+		CubeVertex(-SIDE, -SIDE, -SIDE),
+		CubeVertex(SIDE, -SIDE, -SIDE),
 
-		CubeVertex(-cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, -cubemapSize),
+		CubeVertex(SIDE, -SIDE, -SIDE),
+		CubeVertex(SIDE,  SIDE, -SIDE),
+		CubeVertex(-SIDE, SIDE, -SIDE),
 
-		// Right side face
-		CubeVertex(cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, cubemapSize, cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, cubemapSize),
+		// Back face
+		CubeVertex(-SIDE,  SIDE, SIDE),
+		CubeVertex(-SIDE, -SIDE, SIDE),
+		CubeVertex(SIDE, -SIDE, SIDE),
 
-		CubeVertex(cubemapSize, -cubemapSize, cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, cubemapSize, -cubemapSize),
+		CubeVertex(SIDE, -SIDE, SIDE),
+		CubeVertex(SIDE,  SIDE, SIDE),
+		CubeVertex(-SIDE, SIDE, SIDE),
 
-		//// Back face, note that points are in counter clockwise order
-		CubeVertex(-cubemapSize, -cubemapSize, cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, cubemapSize),
-		CubeVertex(cubemapSize, cubemapSize, cubemapSize),
+		// Left face
+		CubeVertex(-SIDE, -SIDE, SIDE),
+		CubeVertex(-SIDE,  SIDE, SIDE),
+		CubeVertex(-SIDE,  SIDE, -SIDE),
 
-		CubeVertex(cubemapSize, cubemapSize, cubemapSize),
-		CubeVertex(-cubemapSize, cubemapSize, cubemapSize),
-		CubeVertex(-cubemapSize, -cubemapSize, cubemapSize),
+		CubeVertex(-SIDE,  SIDE, -SIDE),
+		CubeVertex(-SIDE, -SIDE, -SIDE),
+		CubeVertex(-SIDE, -SIDE,  SIDE),
 
-		//// Left side face, note that points are in counter clockwise order
-		CubeVertex(-cubemapSize, cubemapSize, cubemapSize),
-		CubeVertex(-cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(-cubemapSize, -cubemapSize, -cubemapSize),
+		// Right face
+		CubeVertex(SIDE, -SIDE, SIDE),
+		CubeVertex(SIDE,  SIDE, SIDE),
+		CubeVertex(SIDE,  SIDE, -SIDE),
 
-		CubeVertex(-cubemapSize, -cubemapSize, -cubemapSize),
-		CubeVertex(-cubemapSize, -cubemapSize, cubemapSize),
-		CubeVertex(-cubemapSize, cubemapSize, cubemapSize),
+		CubeVertex(SIDE,  SIDE, -SIDE),
+		CubeVertex(SIDE, -SIDE, -SIDE),
+		CubeVertex(SIDE, -SIDE,  SIDE),
 
-		//// Top face
-		CubeVertex(-cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(-cubemapSize, cubemapSize, cubemapSize),
-		CubeVertex(cubemapSize, cubemapSize, cubemapSize),
+		// Top face
+		CubeVertex(-SIDE, SIDE,  SIDE),
+		CubeVertex(SIDE, SIDE,  SIDE),
+		CubeVertex(SIDE, SIDE, -SIDE),
 
-		CubeVertex(cubemapSize, cubemapSize, cubemapSize),
-		CubeVertex(cubemapSize, cubemapSize, -cubemapSize),
-		CubeVertex(-cubemapSize, cubemapSize, -cubemapSize),
+		CubeVertex(SIDE,  SIDE, -SIDE),
+		CubeVertex(-SIDE, SIDE, -SIDE),
+		CubeVertex(-SIDE, SIDE,  SIDE),
 
-		//// Bottom face, note that points are in counter clockwise order
-		CubeVertex(-cubemapSize, -cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, -cubemapSize),
-		CubeVertex(cubemapSize, -cubemapSize, cubemapSize),
+		// Bottom face
+		CubeVertex(-SIDE, -SIDE,  SIDE),
+		CubeVertex(SIDE, -SIDE,  SIDE),
+		CubeVertex(SIDE, -SIDE, -SIDE),
 
-		CubeVertex(cubemapSize, -cubemapSize, cubemapSize),
-		CubeVertex(-cubemapSize, -cubemapSize, cubemapSize),
-		CubeVertex(-cubemapSize, -cubemapSize, -cubemapSize),
+		CubeVertex(SIDE, -SIDE, -SIDE),
+		CubeVertex(-SIDE, -SIDE, -SIDE),
+		CubeVertex(-SIDE, -SIDE,  SIDE),
 	};
 
 	void SkyboxRenderer::Draw(Camera* cam)

@@ -1,10 +1,12 @@
 #include "GameEngine.h"
 #include <iostream>
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 1280
+#define HEIGHT 720
 
 namespace GE {
+	bool keyState[4] = { 0, 0, 0, 0 };
+
 	GameEngine::GameEngine()
 	{
 
@@ -58,7 +60,7 @@ namespace GE {
 
 
 		//Create the camera object
-		cam = new Camera(glm::vec3(0.0f, 5.0f, 5.0f),
+		cam = new Camera(glm::vec3(0.0f, 10.0f, 5.0f),
 			glm::vec3(0.0f, 5.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f),
 			90.0f, 640.0f / 480.0f, 0.1f, 100.0f);
@@ -66,42 +68,11 @@ namespace GE {
 		//Create the triangle renderer (Debug testing)
 		modelLoader = new AL::OBJLoader();
 
-		//Debug Model
-		model = new Model(modelLoader);
-		model->LoadFromFile("assets/models/test.obj");
-		
-		if (model->GetVerticies() == nullptr) {
-			std::cerr << "Failed to load model!" << std::endl;
-		}
-
-		material = new Texture("assets/textures/wood.png");
-		modelRenderer = new ModelRenderer(model);
-		modelRenderer->Init();
-		modelRenderer->SetMaterial(material);
-		modelRenderer->SetPos(0.0f, 5.0f, 0.0f);
-		
-		//Ground model
-		ground = new Model(modelLoader);
-		ground->LoadFromFile("assets/models/Plane.obj");
-		if (ground->GetVerticies() == nullptr) {
-			std::cerr << "Failed to load ground model!" << std::endl;
-		}
-		groundMat = new Texture("assets/textures/Grass.jpg");
-		groundRenderer = new ModelRenderer(ground);
-		groundRenderer->Init();
-		groundRenderer->SetMaterial(groundMat);
-
-		//House One model
-		houseOne = new Model(modelLoader);
-		houseOne->LoadFromFile("assets/models/House_One.obj");
-		if (houseOne->GetVerticies() == nullptr) {
-			std::cerr << "Failed to load houseOne model!" << std::endl;
-		}
-		houseOneMat = new Texture("assets/textures/HousesONE.jpg");
-		houseOneRenderer = new ModelRenderer(houseOne);
-		houseOneRenderer->Init();
-		houseOneRenderer->SetMaterial(houseOneMat);
-		houseOneRenderer->SetPos(0, 0, -10);
+		//Scene management
+		sceneManager = new SceneManager();
+		sceneOne = new SceneOne(modelLoader);
+		sceneOne->Init();
+		sceneManager->AddSceneToMap("MainGameScene", sceneOne);
 
 		//Initialise skybox
 		skybox = new SkyboxRenderer("assets/textures/skybox/front.jpg",
@@ -131,12 +102,13 @@ namespace GE {
 	void GameEngine::ProcessInput()
 	{
 		//Process mouse input
-		const float camSpeed = 0.2f;
+		const float camSpeed = 2.0f;
 		const float mouseSens = 0.1f;
 
 		//Get mouse x and y
 		int mouseX, mouseY;
 		SDL_GetMouseState(&mouseX, &mouseY);
+
 
 		float diffX = mouseX - cam->GetOldMouseX();
 		float diffY = cam->GetOldMouseY() - mouseY;
@@ -151,7 +123,6 @@ namespace GE {
 		cam->SetTarget(glm::normalize(direction));
 
 		//Keyboard input process
-		bool keyState[4] = { 0, 0, 0, 0 };
 		int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3;
 
 		SDL_Event e;
@@ -174,7 +145,7 @@ namespace GE {
 					break;
 				}
 			}
-			if (e.type == SDL_KEYUP) {
+			else if (e.type == SDL_KEYUP) {
 				switch (e.key.keysym.scancode) {
 				case SDL_SCANCODE_W:
 					keyState[UP] = false;
@@ -192,26 +163,27 @@ namespace GE {
 					break;
 				}
 			}
-
-			if (keyState[UP]) {
-				cam->SetPos(cam->GetPos() + cam->GetTarget() * camSpeed);
-			}
-			if (keyState[DOWN]) {
-				cam->SetPos(cam->GetPos() - cam->GetTarget() * camSpeed);
-			}
-			if (keyState[LEFT]) {
-				cam->SetPos(cam->GetPos() - glm::normalize(glm::cross(cam->GetTarget(), cam->GetUpDir())) * camSpeed);
-			}
-			if (keyState[UP]) {
-				cam->SetPos(cam->GetPos() + glm::normalize(glm::cross(cam->GetTarget(), cam->GetUpDir())) * camSpeed);
-			}
-
-			cam->UpdateCameraMatricies();
-
-			cam->SetOldMouseX(WIDTH/2);
-			cam->SetOldMouseY(HEIGHT/2);
-			//std::cout << "Cam Pitch: " << cam->GetPitch() << ", Cam Yaw: " << cam->GetYaw() << std::endl;
 		}
+
+		if (keyState[UP]) {
+			cam->SetPos(cam->GetPos() + cam->GetTarget() * camSpeed * deltaTime);
+		}
+		if (keyState[DOWN]) {
+			cam->SetPos(cam->GetPos() - cam->GetTarget() * camSpeed * deltaTime);
+		}
+		if (keyState[LEFT]) {
+			cam->SetPos(cam->GetPos() - glm::normalize(glm::cross(cam->GetTarget(), cam->GetUpDir())) * camSpeed * deltaTime);
+		}
+		if (keyState[RIGHT]) {
+			cam->SetPos(cam->GetPos() + glm::normalize(glm::cross(cam->GetTarget(), cam->GetUpDir())) * camSpeed * deltaTime);
+		}
+
+		cam->UpdateCameraMatricies();
+
+		cam->SetOldMouseX(WIDTH / 2);
+		cam->SetOldMouseY(HEIGHT / 2);
+
+		sceneManager->ProcessInput();
 	}
 
 	void GameEngine::Update()
@@ -224,8 +196,11 @@ namespace GE {
 			frameCount = 0;
 			lastCapUpdate = SDL_GetTicks();
 		}
-		//modelRenderer->SetRot(modelRenderer->GetRotX(), modelRenderer->GetRotY() + 0.03, modelRenderer->GetRotZ());
-		houseOneRenderer->SetRot(houseOneRenderer->GetRotX(), houseOneRenderer->GetRotY() + 0.03, houseOneRenderer->GetRotZ());
+		//vvv All game based update logic MUST GO IN HERE to be tied to realworld time, not frame speed vvv
+		deltaTime = (SDL_GetTicks() - lastTick) / 1000.0f;
+		sceneManager->Update(deltaTime);
+		lastTick = SDL_GetTicks();
+		//^^^ All game based update logic MUST GO IN HERE to be tied to realworld time, not frame speed ^^^
 	}
 
 	void GameEngine::Draw()
@@ -235,30 +210,21 @@ namespace GE {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//Draw the skybox firsty as it must always be at the back
-		skybox->Draw(cam);
+		//skybox->Draw(cam);
 
-		//modelRenderer->Draw(cam);
-		groundRenderer->Draw(cam);
-		houseOneRenderer->Draw(cam);
+		sceneManager->Draw(cam);
 
 		SDL_GL_SwapWindow(window);
 	}
 
 	void GameEngine::Shutdown()
 	{
-		modelRenderer->Destroy();
-		groundRenderer->Destroy();
-		houseOneRenderer->Destroy();
+		sceneManager->Shutdown();
 
 		skybox->Destroy();
 
+		delete sceneManager;
 		delete skybox;
-		delete modelRenderer;
-		delete model;
-		delete groundRenderer;
-		delete ground;
-		delete houseOneRenderer;
-		delete houseOne;
 		delete cam;
 
 		SDL_DestroyWindow(window);

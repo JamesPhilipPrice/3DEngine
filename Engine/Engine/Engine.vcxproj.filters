@@ -34,6 +34,12 @@
     <Filter Include="Source Files\GameObjectComp\Visual">
       <UniqueIdentifier>{5cfc433d-4b78-427d-b703-c8c1797416ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\MainCode\SceneManagement">
+      <UniqueIdentifier>{50ebb3cc-43b3-450f-bf23-58e97f66a776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainCode\SceneManagement\Scenes">
+      <UniqueIdentifier>{f88b933e-174f-4d53-bcfb-d1c83a1ceae7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -60,6 +66,15 @@
     <ClInclude Include="ShaderUtility.h">
       <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Source Files\MainCode\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\MainCode\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOne.h">
+      <Filter>Source Files\MainCode\SceneManagement\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -82,6 +97,12 @@
     </ClCompile>
     <ClCompile Include="ShaderUtility.cpp">
       <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOne.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
