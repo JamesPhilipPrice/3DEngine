@@ -71,16 +71,8 @@ namespace GE {
 		//Scene management
 		sceneManager = new SceneManager();
 		sceneOne = new SceneOne(modelLoader);
-		sceneOne->Init();
+		sceneOne->Init(cam);
 		sceneManager->AddSceneToMap("MainGameScene", sceneOne);
-
-		//Initialise skybox
-		skybox = new SkyboxRenderer("assets/textures/skybox/front.jpg",
-			"assets/textures/skybox/back.jpg",
-			"assets/textures/skybox/right.jpg",
-			"assets/textures/skybox/left.jpg",
-			"assets/textures/skybox/top.jpg",
-			"assets/textures/skybox/bottom.jpg");
 		return true;
 	}
 
@@ -221,10 +213,7 @@ namespace GE {
 	{
 		sceneManager->Shutdown();
 
-		skybox->Destroy();
-
 		delete sceneManager;
-		delete skybox;
 		delete cam;
 
 		SDL_DestroyWindow(window);

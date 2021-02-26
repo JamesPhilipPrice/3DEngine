@@ -6,7 +6,7 @@ namespace GE {
 		Scene() {}
 		~Scene(){}
 
-		virtual bool Init() {
+		virtual bool Init(Camera* _cam) {
 			return false;
 		}
 		virtual void ProcessInput() {}

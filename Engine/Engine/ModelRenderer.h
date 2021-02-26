@@ -6,11 +6,13 @@
 #include "Camera.h"
 #include "Model.h"
 #include "Texture.h"
+#include "Terrain.h"
+#include "Skydome.h"
 
 namespace GE {
 	class ModelRenderer {
 	public:
-		ModelRenderer(Model* _model);
+		ModelRenderer(Model* _model, Camera* _cam);
 		virtual ~ModelRenderer();
 
 		void Init();
@@ -18,6 +20,8 @@ namespace GE {
 		void Update();
 
 		void Draw(Camera* _cam);
+		void DrawTerrain(Terrain* _terrain);
+		void DrawSkydome(Skydome* _skydome);
 
 		void Destroy();
 
@@ -79,6 +83,8 @@ namespace GE {
 			material = _tex;
 		}
 	private:
+		Camera* camera;
+
 		GLuint programId;
 		GLint vertexPos3DLocation;
 		GLint vertexUVLocation;

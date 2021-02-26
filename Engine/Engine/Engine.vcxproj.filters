@@ -40,6 +40,9 @@
     <Filter Include="Source Files\MainCode\SceneManagement\Scenes">
       <UniqueIdentifier>{f88b933e-174f-4d53-bcfb-d1c83a1ceae7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Environment">
+      <UniqueIdentifier>{4420fa73-2557-4fee-8076-5a3032f98689}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -75,6 +78,18 @@
     <ClInclude Include="SceneOne.h">
       <Filter>Source Files\MainCode\SceneManagement\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="GeometryUtils.h">
+      <Filter>Source Files\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="Skydome.h">
+      <Filter>Source Files\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvironmentRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -99,10 +114,16 @@
       <Filter>Source Files\GameObjectComp\Visual</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MainCode\SceneManagement</Filter>
     </ClCompile>
     <ClCompile Include="SceneOne.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MainCode\SceneManagement\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Skydome.cpp">
+      <Filter>Source Files\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvironmentRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

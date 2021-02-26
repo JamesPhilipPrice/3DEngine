@@ -27,6 +27,11 @@ namespace GE {
 			}
 		}
 
+		void ChangeScene(std::string _refferenceName) {
+			activeScene = stringToScenePointer[_refferenceName];
+			std::cout << "Setting " << _refferenceName << " to the active scene" << std::endl;
+		}
+
 	private:
 		std::map<std::string, Scene*> stringToScenePointer;
 

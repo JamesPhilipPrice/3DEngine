@@ -5,7 +5,10 @@
 #include "Model.h"
 #include "OBJLoader.h"
 #include "SkyBoxRenderer.h"
+#include "Skydome.h"
+#include "EnvironmentRenderer.h"
 #include "Texture.h"
+#include "Terrain.h"
 
 namespace GE {
 	class SceneOne : public Scene {
@@ -15,7 +18,7 @@ namespace GE {
 		}
 		~SceneOne() {}
 
-		bool Init() override;
+		bool Init(Camera* _cam) override;
 		void ProcessInput() override;
 		void Update() override;
 		void Draw(Camera* _cam) override;
@@ -25,8 +28,10 @@ namespace GE {
 		AL::OBJLoader* modelLoader;
 
 		//Don't bother reading after this point it's just a bunch of delcalarations
+		Skydome* skydome;
+		Texture* skydomeTexture;
 
-		SkyboxRenderer* skybox;
+		EnvironmentRenderer* environmentRenderer;
 
 		//GameObjects
 		//Ground

@@ -4,8 +4,9 @@
 
 namespace GE {
 
-	ModelRenderer::ModelRenderer(Model* _model)
+	ModelRenderer::ModelRenderer(Model* _model, Camera* _cam)
 	{
+		camera = _cam;
 		posX = posY = posZ = 0.0f;
 		rotX = rotY = rotZ = 0.0f;
 		scaleX = scaleY = scaleZ = 1.0f;
@@ -124,6 +125,7 @@ namespace GE {
 		projectionUniformID = glGetUniformLocation(programId, "projection");
 		samplerID = glGetUniformLocation(programId, "sampler");
 
+		//Model specific initialization
 		glGenBuffers(1, &vboModel);
 		glBindBuffer(GL_ARRAY_BUFFER, vboModel);
 
@@ -179,6 +181,15 @@ namespace GE {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		
 		glDisable(GL_CULL_FACE);
+	}
+
+	void ModelRenderer::DrawTerrain(Terrain* _terrain)
+	{
+	}
+
+	void ModelRenderer::DrawSkydome(Skydome* _skydome)
+	{
+
 	}
 
 	void ModelRenderer::Destroy()

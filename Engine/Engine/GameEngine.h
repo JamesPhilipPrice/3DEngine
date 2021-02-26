@@ -6,7 +6,6 @@
 #include "ModelRenderer.h"
 #include "Model.h"
 #include "OBJLoader.h"
-#include "SkyBoxRenderer.h"
 #include "SceneManager.h"
 #include "SceneOne.h"
 
@@ -68,9 +67,6 @@ namespace GE {
 		Model* houseThree;
 		Texture* houseThreeMat;
 		ModelRenderer* houseThreeRenderer;
-
-		//Skybox
-		SkyboxRenderer* skybox;
 	};
 
 	void DisplayInfoMessage(const char*);

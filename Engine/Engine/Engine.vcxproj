@@ -152,7 +152,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="EnvironmentRenderer.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GeometryUtils.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="ModelRenderer.h" />
@@ -161,9 +163,12 @@
     <ClInclude Include="SceneOne.h" />
     <ClInclude Include="ShaderUtility.h" />
     <ClInclude Include="SkyBoxRenderer.h" />
+    <ClInclude Include="Skydome.h" />
+    <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EnvironmentRenderer.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -172,6 +177,7 @@
     <ClCompile Include="SceneOne.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="SkyBoxRenderer.cpp" />
+    <ClCompile Include="Skydome.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

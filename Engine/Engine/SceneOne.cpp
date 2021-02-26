@@ -1,18 +1,17 @@
 #include "SceneOne.h"
 
 namespace GE {
-	bool SceneOne::Init()
+	bool SceneOne::Init(Camera* _cam)
 	{
 		//Setup skybox
+		environmentRenderer = new EnvironmentRenderer();
+		skydome = new Skydome();
+		skydome->Init(10, 10);
+		skydomeTexture = new Texture("assets/textures/skybox/test.png");
+		environmentRenderer->InitSkydome(skydome);
+		environmentRenderer->SetSkyTexture(skydomeTexture);
 
-		skybox = new SkyboxRenderer("assets/textures/skybox/front.jpg",
-			"assets/textures/skybox/back.jpg",
-			"assets/textures/skybox/right.jpg",
-			"assets/textures/skybox/left.jpg",
-			"assets/textures/skybox/top.jpg",
-			"assets/textures/skybox/bottom.jpg");
-
-		//Setup gameonbjects
+		//Setup gameobjects
 
 		//Ground model
 		ground = new Model(modelLoader);
@@ -21,7 +20,7 @@ namespace GE {
 			std::cerr << "Failed to load ground model!" << std::endl;
 		}
 		groundMat = new Texture("assets/textures/Grass.jpg");
-		groundRenderer = new ModelRenderer(ground);
+		groundRenderer = new ModelRenderer(ground, _cam);
 		groundRenderer->Init();
 		groundRenderer->SetMaterial(groundMat);
 
@@ -36,7 +35,7 @@ namespace GE {
 		if (houseOne->GetVerticies() == nullptr) {
 			std::cerr << "Failed to load houseOne model!" << std::endl;
 		}
-		houseOneRenderer = new ModelRenderer(houseOne);
+		houseOneRenderer = new ModelRenderer(houseOne, _cam);
 		houseOneRenderer->Init();
 		houseOneRenderer->SetMaterial(houseMatOne);
 
@@ -46,7 +45,7 @@ namespace GE {
 		if (houseTwo->GetVerticies() == nullptr) {
 			std::cerr << "Failed to load houseTwo model!" << std::endl;
 		}
-		houseTwoRenderer = new ModelRenderer(houseTwo);
+		houseTwoRenderer = new ModelRenderer(houseTwo, _cam);
 		houseTwoRenderer->Init();
 		houseTwoRenderer->SetMaterial(houseMatOne);
 
@@ -56,7 +55,7 @@ namespace GE {
 		if (houseThree->GetVerticies() == nullptr) {
 			std::cerr << "Failed to load houseThree model!" << std::endl;
 		}
-		houseThreeRenderer = new ModelRenderer(houseThree);
+		houseThreeRenderer = new ModelRenderer(houseThree, _cam);
 		houseThreeRenderer->Init();
 		houseThreeRenderer->SetMaterial(houseMatOne);
 		return false;
@@ -73,11 +72,11 @@ namespace GE {
 
 	void SceneOne::Draw(Camera* _cam)
 	{
-		skybox->Draw(_cam);
 		groundRenderer->Draw(_cam);
 		houseOneRenderer->Draw(_cam);
 		houseTwoRenderer->Draw(_cam);
 		houseThreeRenderer->Draw(_cam);
+		environmentRenderer->DrawSkydome(_cam);
 	}
 
 	void SceneOne::Shutdown()
@@ -86,7 +85,7 @@ namespace GE {
 		houseOneRenderer->Destroy();
 		houseTwoRenderer->Destroy();
 		houseThreeRenderer->Destroy();
-		skybox->Destroy();
+		environmentRenderer->Destroy();
 
 		delete groundRenderer;
 		delete ground;
@@ -96,7 +95,6 @@ namespace GE {
 		delete houseTwo;
 		delete houseThreeRenderer;
 		delete houseThree;
-		delete skybox;
 	}
 }
 
