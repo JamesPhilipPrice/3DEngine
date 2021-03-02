@@ -150,10 +150,10 @@ namespace GE {
 			}
 
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + faceNum, 0,
-				format,
+				GL_RGB,
 				surfaceImage->w, surfaceImage->h,
 				0,
-				format,
+				GL_RGB,
 				GL_UNSIGNED_BYTE,
 				surfaceImage->pixels);
 

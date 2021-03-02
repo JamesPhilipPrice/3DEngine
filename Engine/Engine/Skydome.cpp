@@ -64,7 +64,7 @@ namespace GE {
 			}
 		}
 
-		numVerticies = tempVerticies.size();
+		numVerticies = indicies.size();
 		verticies = new Vertex[numVerticies];
 
 		for (int i = 0; i < indicies.size(); i++) {

@@ -29,6 +29,7 @@ namespace GE {
 
 		//Don't bother reading after this point it's just a bunch of delcalarations
 		Skydome* skydome;
+		SkyboxRenderer* skybox;
 		Texture* skydomeTexture;
 
 		EnvironmentRenderer* environmentRenderer;

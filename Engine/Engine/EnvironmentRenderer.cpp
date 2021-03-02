@@ -46,10 +46,10 @@ namespace GE {
 			"out vec4 fragmentColour;\n"
 			"void main()\n"
 			"{\n"
-			"fragmentColour = texture(sampler, uv).rgba;\n"
+			"fragmentColour = vec4(0.0, 0.0, 0.0, 1.0);\n"
 			"}\n"
 		};
-
+		//fragmentColour = texture(sampler, uv).rgba
 		glShaderSource(fragmentShader, 1, F_ShaderCode, NULL);
 
 		glCompileShader(fragmentShader);
@@ -99,6 +99,7 @@ namespace GE {
 	}
 	void EnvironmentRenderer::DrawSkydome(Camera* _cam)
 	{
+		std::cout << "Drawing skydome..." << std::endl;
 		glm::mat4 transformationMat = glm::mat4(1.0f);
 
 		transformationMat = glm::translate(transformationMat, glm::vec3(s_posX, s_posY, s_posZ));

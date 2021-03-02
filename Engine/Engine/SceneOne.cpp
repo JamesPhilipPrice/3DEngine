@@ -4,12 +4,19 @@ namespace GE {
 	bool SceneOne::Init(Camera* _cam)
 	{
 		//Setup skybox
-		environmentRenderer = new EnvironmentRenderer();
-		skydome = new Skydome();
-		skydome->Init(10, 10);
-		skydomeTexture = new Texture("assets/textures/skybox/test.png");
-		environmentRenderer->InitSkydome(skydome);
-		environmentRenderer->SetSkyTexture(skydomeTexture);
+		skybox = new SkyboxRenderer("assets/textures/skybox/front.jpg", 
+			"assets/textures/skybox/back.jpg", 
+			"assets/textures/skybox/left.jpg", 
+			"assets/textures/skybox/right.jpg", 
+			"assets/textures/skybox/top.jpg", 
+			"assets/textures/skybox/bottom.jpg");
+
+		//environmentRenderer = new EnvironmentRenderer();
+		//skydome = new Skydome();
+		//skydome->Init(20, 10);
+		//skydomeTexture = new Texture("assets/textures/skybox/test.png");
+		//environmentRenderer->InitSkydome(skydome);
+		//environmentRenderer->SetSkyTexture(skydomeTexture);
 
 		//Setup gameobjects
 
@@ -67,16 +74,21 @@ namespace GE {
 
 	void SceneOne::Update()
 	{
-
+		GLenum err;
+		while ((err = glGetError()) != GL_NO_ERROR)
+		{
+			std::cout << "Error: " << err << std::endl;
+		}
 	}
 
 	void SceneOne::Draw(Camera* _cam)
 	{
+		skybox->Draw(_cam);
 		groundRenderer->Draw(_cam);
 		houseOneRenderer->Draw(_cam);
 		houseTwoRenderer->Draw(_cam);
 		houseThreeRenderer->Draw(_cam);
-		environmentRenderer->DrawSkydome(_cam);
+		//environmentRenderer->DrawSkydome(_cam);
 	}
 
 	void SceneOne::Shutdown()
@@ -85,7 +97,8 @@ namespace GE {
 		houseOneRenderer->Destroy();
 		houseTwoRenderer->Destroy();
 		houseThreeRenderer->Destroy();
-		environmentRenderer->Destroy();
+		skybox->Destroy();
+		//environmentRenderer->Destroy();
 
 		delete groundRenderer;
 		delete ground;
@@ -95,6 +108,7 @@ namespace GE {
 		delete houseTwo;
 		delete houseThreeRenderer;
 		delete houseThree;
+		delete skybox;
 	}
 }
 
