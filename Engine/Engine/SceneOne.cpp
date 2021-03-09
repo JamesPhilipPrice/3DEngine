@@ -4,12 +4,12 @@ namespace GE {
 	bool SceneOne::Init(Camera* _cam)
 	{
 		//Setup skybox
-		skybox = new SkyboxRenderer("assets/textures/skybox/front.jpg", 
-			"assets/textures/skybox/back.jpg", 
-			"assets/textures/skybox/left.jpg", 
-			"assets/textures/skybox/right.jpg", 
-			"assets/textures/skybox/top.jpg", 
-			"assets/textures/skybox/bottom.jpg");
+		skybox = new SkyboxRenderer("assets/textures/skybox/front.png", 
+			"assets/textures/skybox/back.png", 
+			"assets/textures/skybox/left.png", 
+			"assets/textures/skybox/right.png", 
+			"assets/textures/skybox/top.png", 
+			"assets/textures/skybox/bottom.png");
 
 		//environmentRenderer = new EnvironmentRenderer();
 		//skydome = new Skydome();
@@ -65,6 +65,64 @@ namespace GE {
 		houseThreeRenderer = new ModelRenderer(houseThree, _cam);
 		houseThreeRenderer->Init();
 		houseThreeRenderer->SetMaterial(houseMatOne);
+
+		//Load windmill stuff
+		windmillModel = new Model(modelLoader);
+		windmillFanModel = new Model(modelLoader);
+		windmillModel->LoadFromFile("assets/models/windmill/Windmill_base.obj");
+		windmillFanModel->LoadFromFile("assets/models/windmill/Windmill_fan.obj");
+		if (windmillModel->GetVerticies() == nullptr) {
+			std::cerr << "Failed to load windmill base model" << std::endl;
+		}
+
+		if (windmillFanModel->GetVerticies() == nullptr) {
+			std::cerr << "Failed to load windmill fan model" << std::endl;
+		}
+		windmillTexture = new Texture("assets/textures/windmill/Windmill_base.png");
+		windmillFanTexture = new Texture("assets/textures/windmill/Windmill_fan.png");
+
+		windmillBase = new ModelRenderer(windmillModel, _cam);
+		windmillBase->Init();
+		windmillBase->SetMaterial(windmillTexture);
+		windmillFan = new ModelRenderer(windmillFanModel, _cam);
+		windmillFan->Init();
+		windmillFan->SetMaterial(windmillFanTexture);
+
+		windmillBase->SetRot(0, 180, 0);
+		windmillBase->SetPos(30, 0, 30);
+		windmillFan->SetRot(0, 0, 0);
+		windmillFan->SetPos(30-6.84587, 10.7247, 30);
+
+		//Load bird stuff
+		birdModel = new Model(modelLoader);
+		birdModel->LoadFromFile("assets/models/animals/Bird.obj");
+		if (birdModel->GetVerticies() == nullptr) {
+			std::cerr << "Failed to load Bird model" << std::endl;
+		}
+		birdTexture = new Texture("assets/textures/animals/Bird.png");
+		birdOne = new ModelRenderer(birdModel, _cam);
+		birdOne->Init();
+		birdOne->SetMaterial(birdTexture);
+		birdOne->SetPos(0, 20, 0);
+
+		//Load tanks
+		tankTexture = new Texture("assets/textures/Mark_V.bmp");
+		tankModel = new Model(modelLoader);
+		tankModel->LoadFromFile("assets/models/Mark_V.obj");
+		if (tankModel->GetVerticies() == nullptr) {
+			std::cerr << "Failed to load tank model" << std::endl;
+		}
+		tankRendererOne = new ModelRenderer(tankModel, _cam);
+		tankRendererOne->Init();
+		tankRendererOne->SetMaterial(tankTexture);
+		tankRendererOne->SetScale(0.025f, 0.025f, 0.025f);
+		tankRendererOne->SetPos(10, 0, -15);
+		tankRendererTwo = new ModelRenderer(tankModel, _cam);
+		tankRendererTwo->Init();
+		tankRendererTwo->SetMaterial(tankTexture);
+		tankRendererTwo->SetRot(0, 45, 0);
+		tankRendererTwo->SetScale(0.025f, 0.025f, 0.025f);
+		tankRendererTwo->SetPos(10, 0, 15);
 		return false;
 	}
 
@@ -72,13 +130,31 @@ namespace GE {
 	{
 	}
 
-	void SceneOne::Update()
+	void SceneOne::Update(float _deltaTime)
 	{
+		//Error pulling stuff
 		GLenum err;
 		while ((err = glGetError()) != GL_NO_ERROR)
 		{
 			std::cout << "Error: " << err << std::endl;
 		}
+
+		//Actual update stuff
+
+		//Bird movement
+		//Rotate bird
+		birdAngle += (float)(birdSpeed * _deltaTime);
+		birdOne->SetRot(0.0f, birdAngle, 0.0f);
+		float birdX;
+		float birdZ;
+		birdX = (float)(birdRadiusFromOrigin * sinf(birdAngle * (3.1415 / 180)));
+		birdZ = (float)(birdRadiusFromOrigin * cosf(birdAngle * (3.1415 / 180)));
+		//Set bird pos
+		birdOne->SetPos(birdX, birdOne->GetPosY(), birdZ);
+
+		//Windmill
+		windmillAngle += windmillFanSpeed * _deltaTime;
+		windmillFan->SetRot(windmillAngle, 0.0f, 0.0f);
 	}
 
 	void SceneOne::Draw(Camera* _cam)
@@ -88,7 +164,11 @@ namespace GE {
 		houseOneRenderer->Draw(_cam);
 		houseTwoRenderer->Draw(_cam);
 		houseThreeRenderer->Draw(_cam);
-		//environmentRenderer->DrawSkydome(_cam);
+		windmillBase->Draw(_cam);
+		windmillFan->Draw(_cam);
+		birdOne->Draw(_cam);
+		tankRendererOne->Draw(_cam);
+		tankRendererTwo->Draw(_cam);
 	}
 
 	void SceneOne::Shutdown()
@@ -97,6 +177,11 @@ namespace GE {
 		houseOneRenderer->Destroy();
 		houseTwoRenderer->Destroy();
 		houseThreeRenderer->Destroy();
+		windmillBase->Destroy();
+		windmillFan->Destroy();
+		birdOne->Destroy();
+		tankRendererOne->Destroy();
+		tankRendererTwo->Destroy();
 		skybox->Destroy();
 		//environmentRenderer->Destroy();
 
@@ -108,6 +193,15 @@ namespace GE {
 		delete houseTwo;
 		delete houseThreeRenderer;
 		delete houseThree;
+		delete windmillBase;
+		delete windmillFan;
+		delete windmillModel;
+		delete windmillFanModel;
+		delete birdOne;
+		delete birdModel;
+		delete tankRendererOne;
+		delete tankRendererTwo;
+		delete tankModel;
 		delete skybox;
 	}
 }

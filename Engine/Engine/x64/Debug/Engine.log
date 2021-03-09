@@ -3,10 +3,7 @@ E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'retur
 E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
 E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  SkyBoxRenderer.cpp
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+E:\Projects\Github\3DEngine\Engine\Engine\SceneOne.cpp(94,46): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Projects\Github\3DEngine\Engine\Engine\SceneOne.cpp(150,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Projects\Github\3DEngine\Engine\Engine\SceneOne.cpp(151,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Engine.vcxproj -> E:\Projects\Github\3DEngine\Engine\x64\Debug\Engine.exe

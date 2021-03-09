@@ -10,7 +10,7 @@ namespace GE {
 			return false;
 		}
 		virtual void ProcessInput() {}
-		virtual void Update() {}
+		virtual void Update(float _deltaTime) {}
 		virtual void Draw(Camera* _cam) {}
 		virtual void Shutdown() {}
 	};

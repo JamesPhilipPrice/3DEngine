@@ -60,3 +60,9 @@ I have also created a scene manager system so that I can create and define multi
 ## Update: 02/03/21
 I have managed to fix the skybox and it is now rendering with texture.
 - All Stage one requirements met
+
+## Update: 09/03/21
+I have implemented some dynamic objects into the scene (a widnmill with a spinning fan and a bird that cirles the world)
+So far this leaves just the height map terrain left for my stage two requirements
+Here is a short gif of a stationary camera in the scene:
+<img src="Documentation_Assets/dynamicObjects.gif?raw=true"/>

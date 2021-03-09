@@ -16,7 +16,7 @@ namespace GE {
 
 	void SceneManager::Update(float _deltaTime)
 	{
-		activeScene->Update();
+		activeScene->Update(_deltaTime);
 	}
 
 	void SceneManager::Draw(Camera* _cam)
