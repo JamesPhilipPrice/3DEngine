@@ -189,9 +189,10 @@ namespace GE {
 			lastCapUpdate = SDL_GetTicks();
 		}
 		//vvv All game based update logic MUST GO IN HERE to be tied to realworld time, not frame speed vvv
-		deltaTime = (SDL_GetTicks() - lastTick) / 1000.0f;
+		int currentTick = SDL_GetTicks();
+		deltaTime = (float)((currentTick - lastTick) / 1000.0f);
 		sceneManager->Update(deltaTime);
-		lastTick = SDL_GetTicks();
+		lastTick = currentTick;
 		//^^^ All game based update logic MUST GO IN HERE to be tied to realworld time, not frame speed ^^^
 	}
 
