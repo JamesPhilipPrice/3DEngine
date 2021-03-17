@@ -1,9 +1,50 @@
-﻿  SceneOne.cpp
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\SceneOne.cpp(94,46): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Projects\Github\3DEngine\Engine\Engine\SceneOne.cpp(150,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-E:\Projects\Github\3DEngine\Engine\Engine\SceneOne.cpp(151,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Engine.vcxproj -> E:\Projects\Github\3DEngine\Engine\x64\Debug\Engine.exe
+﻿  EnvironmentRenderer.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  GameEngine.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Model.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Model.cpp(12,18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Model.cpp(17,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  ModelRenderer.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  SceneManager.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  SceneOne.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\SceneOne.cpp(94,46): warning C4305: 'argument': truncation from 'double' to 'float'
+Z:\GitHub\3DEngine\Engine\Engine\SceneOne.cpp(150,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\SceneOne.cpp(151,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  ShaderUtility.cpp
+  SkyBoxRenderer.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(60,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Skydome.cpp
+Z:\GitHub\3DEngine\Engine\Engine\Skydome.cpp(21,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Skydome.cpp(22,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Skydome.cpp(30,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Z:\GitHub\3DEngine\Engine\Engine\Skydome.cpp(67,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Texture.cpp
+  Generating Code...
+  Engine.vcxproj -> Z:\GitHub\3DEngine\Engine\x64\Debug\Engine.exe
