@@ -125,5 +125,8 @@
     <ClCompile Include="EnvironmentRenderer.cpp">
       <Filter>Source Files\Renderers</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

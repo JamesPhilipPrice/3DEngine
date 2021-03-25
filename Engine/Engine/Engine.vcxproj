@@ -178,6 +178,7 @@
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="SkyBoxRenderer.cpp" />
     <ClCompile Include="Skydome.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

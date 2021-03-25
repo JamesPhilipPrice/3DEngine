@@ -11,13 +11,6 @@ namespace GE {
 			"assets/textures/skybox/top.png", 
 			"assets/textures/skybox/bottom.png");
 
-		//environmentRenderer = new EnvironmentRenderer();
-		//skydome = new Skydome();
-		//skydome->Init(20, 10);
-		//skydomeTexture = new Texture("assets/textures/skybox/test.png");
-		//environmentRenderer->InitSkydome(skydome);
-		//environmentRenderer->SetSkyTexture(skydomeTexture);
-
 		//Setup gameobjects
 
 		//Ground model
