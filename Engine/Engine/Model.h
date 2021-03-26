@@ -20,6 +20,10 @@ namespace GE {
 			return (void*)verticies;
 		}
 
+		void SetVerticies(std::vector<Vertex> _verts) {
+			//NEED TO FIX THIS
+		}
+
 		int GetNumVerticies() {
 			return numVerticies;
 		}

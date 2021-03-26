@@ -24,6 +24,9 @@ namespace GE {
 		groundRenderer->Init();
 		groundRenderer->SetMaterial(groundMat);
 
+		//TEST TERRAIN
+		terrainTool = new Terrain("assets/textures/heightmaps/test.png", groundMat, 10, 1);
+
 		//Load house materials
 		houseMatOne = new Texture("assets/textures/HousesONE.jpg");
 		houseMatTwo = new Texture("assets/textures/HousesTWO.jpg");

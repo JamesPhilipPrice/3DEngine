@@ -52,7 +52,7 @@ namespace GE {
 			return false;
 		}
 
-		if (SDL_GL_SetSwapInterval(1) != 0) {
+		if (SDL_GL_SetSwapInterval(0) != 0) {
 			std::cerr << "Warning! Unable to set vSync. Error: " << SDL_GetError() << std::endl;
 			return false;
 		}
@@ -105,8 +105,8 @@ namespace GE {
 		float diffX = mouseX - cam->GetOldMouseX();
 		float diffY = cam->GetOldMouseY() - mouseY;
 
-		cam->SetYaw((cam->GetYaw() + diffX) * mouseSens);
-		cam->SetPitch((cam->GetPitch() + diffY) * mouseSens);
+		cam->SetYaw(cam->GetYaw() + (diffX * mouseSens));
+		cam->SetPitch(cam->GetPitch() + (diffY * mouseSens));
 
 		glm::vec3 direction;
 		direction.x = cos(glm::radians(cam->GetYaw())) * cos(glm::radians(cam->GetPitch()));
@@ -174,6 +174,7 @@ namespace GE {
 
 		cam->SetOldMouseX(WIDTH / 2);
 		cam->SetOldMouseY(HEIGHT / 2);
+		SDL_WarpMouseInWindow(window, WIDTH / 2, HEIGHT / 2);
 
 		sceneManager->ProcessInput();
 	}

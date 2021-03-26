@@ -14,7 +14,6 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 	channels = heightMap->format->BytesPerPixel;
 
 	unsigned char* inputData = (unsigned char*)heightMap->pixels;
-	std::vector<Vertex> verticies;
 
 	float x, y, z, u, v;
 	for (int row = 0; row < height; row++) {
@@ -36,7 +35,7 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 		}
 	}
 
-	std::vector<unsigned int> indecies;
+	
 
 	unsigned int c, n;
 	for (int row = 0; row < height - 1; row++) {
@@ -53,7 +52,7 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 		}
 	}
 
-	//Generate vbo
+	/*//Generate vbo
 	glCreateBuffers(1, &vboTerrain);
 	glBindBuffer(GL_ARRAY_BUFFER, vboTerrain);
 	glBufferData(GL_ARRAY_BUFFER, verticies.size() * sizeof(Vertex), (void*)&verticies[0], GL_STATIC_DRAW);
@@ -63,7 +62,7 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboTerrain);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indecies.size() * sizeof(unsigned int), (void*)&indecies[0], GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
-	
+	*/
 	//Cleanup
 	SDL_FreeSurface(heightMap);
 }

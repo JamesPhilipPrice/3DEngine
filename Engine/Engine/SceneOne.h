@@ -40,6 +40,11 @@ namespace GE {
 		Texture* groundMat;
 		ModelRenderer* groundRenderer;
 
+		//TESTING TERRAIN
+		Terrain* terrainTool;
+		Model* terrainModel;
+		ModelRenderer* terrainRenderer;
+
 		Texture* houseMatOne;
 		Texture* houseMatTwo;
 
