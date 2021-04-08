@@ -21,7 +21,11 @@ namespace GE {
 		}
 
 		void SetVerticies(std::vector<Vertex> _verts) {
-			//NEED TO FIX THIS
+			numVerticies = _verts.size();
+
+			verticies = new Vertex[numVerticies];
+
+			std::copy(_verts.begin(), _verts.end(), verticies);
 		}
 
 		int GetNumVerticies() {

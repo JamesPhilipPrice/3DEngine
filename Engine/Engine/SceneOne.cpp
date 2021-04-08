@@ -25,7 +25,12 @@ namespace GE {
 		groundRenderer->SetMaterial(groundMat);
 
 		//TEST TERRAIN
-		terrainTool = new Terrain("assets/textures/heightmaps/test.png", groundMat, 10, 1);
+		terrainTool = new Terrain("assets/textures/heightmaps/test.png", groundMat, 100, 10);
+		terrainModel = new Model(modelLoader);
+		terrainModel->SetVerticies(terrainTool->GetVerticies());
+		terrainRenderer = new ModelRenderer(terrainModel, _cam);
+		terrainRenderer->Init();
+		terrainRenderer->SetMaterial(terrainTool->GetTexture());
 
 		//Load house materials
 		houseMatOne = new Texture("assets/textures/HousesONE.jpg");
@@ -156,7 +161,8 @@ namespace GE {
 	void SceneOne::Draw(Camera* _cam)
 	{
 		skybox->Draw(_cam);
-		groundRenderer->Draw(_cam);
+		//groundRenderer->Draw(_cam);
+		terrainRenderer->Draw(_cam);
 		houseOneRenderer->Draw(_cam);
 		houseTwoRenderer->Draw(_cam);
 		houseThreeRenderer->Draw(_cam);
@@ -170,6 +176,7 @@ namespace GE {
 	void SceneOne::Shutdown()
 	{
 		groundRenderer->Destroy();
+		terrainRenderer->Destroy();
 		houseOneRenderer->Destroy();
 		houseTwoRenderer->Destroy();
 		houseThreeRenderer->Destroy();
@@ -183,6 +190,8 @@ namespace GE {
 
 		delete groundRenderer;
 		delete ground;
+		delete terrainRenderer;
+		delete terrainModel;
 		delete houseOneRenderer;
 		delete houseOne;
 		delete houseTwoRenderer;

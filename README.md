@@ -66,3 +66,8 @@ I have implemented some dynamic objects into the scene (a widnmill with a spinni
 So far this leaves just the height map terrain left for my stage two requirements
 Here is a short gif of a stationary camera in the scene:
 <img src="Documentation_Assets/dynamicObjects.gif?raw=true"/>
+
+## A long overdue Update: 08/04/21
+I have implemented a heightmap based terrain and it seems to work nicely, I just need to create a heightmap that will fit the current map design and then move it into position.
+Here is the current state of the height map terrain:
+<img src="Documentation_Assets/heightTerrain.png?raw=true"/>

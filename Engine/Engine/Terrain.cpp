@@ -19,11 +19,12 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 	for (int row = 0; row < height; row++) {
 		for (int collumn = 0; collumn < width; collumn++) {
 			
-			unsigned char redPixel = inputData[(row * width) + collumn * channels];
-			unsigned char greenPixel = inputData[(row * width) + collumn * channels + 1];
-			unsigned char bluePixel = inputData[(row * width) + collumn * channels + 2];
+			unsigned char redPixel = inputData[((row * width) + collumn) * channels];
+			unsigned char greenPixel = inputData[((row * width) + collumn) * channels + 1];
+			unsigned char bluePixel = inputData[((row * width) + collumn) * channels + 2];
 
 			int meanPixelValue = (redPixel + greenPixel + bluePixel) / 3;
+			//std::cout << "Mean colour: " << meanPixelValue << std::endl;
 
 			x = ((float)collumn / (float)width - 1) * scale;
 			y = (meanPixelValue / 255.0f) * hScale;
