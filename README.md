@@ -67,7 +67,10 @@ So far this leaves just the height map terrain left for my stage two requirement
 Here is a short gif of a stationary camera in the scene:
 <img src="Documentation_Assets/dynamicObjects.gif?raw=true"/>
 
-## A long overdue Update: 08/04/21
+## Update: 23/03/21
+I have started to work on creating a heightmap based terrain that will be built off of the model renderer and progress is slightly slow but hopefully will pick up
+
+## Update: 08/04/21
 I have implemented a heightmap based terrain and it seems to work nicely, I just need to create a heightmap that will fit the current map design and then move it into position.
 Here is the current state of the height map terrain:
 <img src="Documentation_Assets/heightTerrain.png?raw=true"/>
