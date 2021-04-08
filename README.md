@@ -59,6 +59,8 @@ I have also created a scene manager system so that I can create and define multi
 
 ## Update: 02/03/21
 I have managed to fix the skybox and it is now rendering with texture.
+
+### Current development state:
 - All Stage one requirements met
 
 ## Update: 09/03/21
@@ -74,3 +76,7 @@ I have started to work on creating a heightmap based terrain that will be built 
 I have implemented a heightmap based terrain and it seems to work nicely, I just need to create a heightmap that will fit the current map design and then move it into position.
 Here is the current state of the height map terrain:
 <img src="Documentation_Assets/heightTerrain.png?raw=true"/>
+
+### Current development state:
+- All Stage one requirements met
+- All Stage two requirements met
