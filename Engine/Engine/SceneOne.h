@@ -41,6 +41,7 @@ namespace GE {
 		ModelRenderer* groundRenderer;
 
 		//TESTING TERRAIN
+		Texture* terrainMat;
 		Terrain* terrainTool;
 		Model* terrainModel;
 		ModelRenderer* terrainRenderer;

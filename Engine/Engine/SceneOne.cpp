@@ -25,12 +25,14 @@ namespace GE {
 		groundRenderer->SetMaterial(groundMat);
 
 		//TEST TERRAIN
-		terrainTool = new Terrain("assets/textures/heightmaps/test.png", groundMat, 100, 10);
+		terrainMat = new Texture("assets/textures/terrain/SceneOneTerrTex.png");
+		terrainTool = new Terrain("assets/textures/heightmaps/SceneOne.png", terrainMat, 200, 23.2f);
 		terrainModel = new Model(modelLoader);
 		terrainModel->SetVerticies(terrainTool->GetVerticies());
 		terrainRenderer = new ModelRenderer(terrainModel, _cam);
 		terrainRenderer->Init();
 		terrainRenderer->SetMaterial(terrainTool->GetTexture());
+		terrainRenderer->SetPos(100.0f, -3.5f, 100.0f);
 
 		//Load house materials
 		houseMatOne = new Texture("assets/textures/HousesONE.jpg");
