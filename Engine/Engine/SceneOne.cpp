@@ -92,9 +92,9 @@ namespace GE {
 		windmillFan->SetMaterial(windmillFanTexture);
 
 		windmillBase->SetRot(0, 180, 0);
-		windmillBase->SetPos(30, 0, 30);
+		windmillBase->SetPos(30, 1, 30);
 		windmillFan->SetRot(0, 0, 0);
-		windmillFan->SetPos(30-6.84587, 10.7247, 30);
+		windmillFan->SetPos(30-6.84587, 11.7247f, 30);
 
 		//Load bird stuff
 		birdModel = new Model(modelLoader);

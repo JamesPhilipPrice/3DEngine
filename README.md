@@ -80,3 +80,7 @@ Here is the current state of the height map terrain:
 ### Current development state:
 - All Stage one requirements met
 - All Stage two requirements met
+
+## Update: 14/04/21
+I have created a terrain heightmap specifically for the main level and textured it in blender with the results bellow:
+<img src="Documentation_Assets/ImprovedTerrain.png?raw=true"/>
