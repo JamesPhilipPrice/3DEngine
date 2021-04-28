@@ -90,3 +90,4 @@ I managed to build and run the game engine in lubuntu using a VM; however, there
 - The camera movement does not work correctly in the VM because SDL_WarpMouseInWindow() is not working correctly
 - The game is running at around 4 FPS (6 FPS if lucky)
 I believe that these issues are being caused by the use of a VM as my current GPU (AMD RX5700) is not working with the VM itself, so I will try to run the build on a liveboot version of linux on two different machines (one with NVIDIA GPU and one with intel integrated graphics) to compare results.
+<img src="Documentation_Assets/LinuxTestOne.png?raw=true"/>
