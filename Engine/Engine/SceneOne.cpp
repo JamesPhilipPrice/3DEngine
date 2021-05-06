@@ -24,6 +24,11 @@ namespace GE {
 		groundRenderer->Init();
 		groundRenderer->SetMaterial(groundMat);
 
+		//Setup HUD
+		checkerTexture = new Texture("assets/textures/checker.jpg");
+		testSprite = new OrthoSpriteRenderer(checkerTexture);
+		testSprite->Init();
+
 		//TEST TERRAIN
 		terrainMat = new Texture("assets/textures/terrain/SceneOneTerrTex.png");
 		terrainTool = new Terrain("assets/textures/heightmaps/SceneOne.png", terrainMat, 200, 23.2f);
@@ -173,6 +178,9 @@ namespace GE {
 		birdOne->Draw(_cam);
 		tankRendererOne->Draw(_cam);
 		tankRendererTwo->Draw(_cam);
+
+		//DrawHUD
+		testSprite->Draw(glm::vec2(5, 5), glm::vec2(200, 200), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 	}
 
 	void SceneOne::Shutdown()

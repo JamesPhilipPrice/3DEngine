@@ -73,6 +73,7 @@ namespace GE {
 		sceneOne = new SceneOne(modelLoader);
 		sceneOne->Init(cam);
 		sceneManager->AddSceneToMap("MainGameScene", sceneOne);
+		SDL_WarpMouseInWindow(window, WIDTH / 2, HEIGHT / 2);
 		return true;
 	}
 

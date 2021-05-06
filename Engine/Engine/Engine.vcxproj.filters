@@ -90,6 +90,9 @@
     <ClInclude Include="EnvironmentRenderer.h">
       <Filter>Source Files\Renderers</Filter>
     </ClInclude>
+    <ClInclude Include="OrthoSpriteRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">

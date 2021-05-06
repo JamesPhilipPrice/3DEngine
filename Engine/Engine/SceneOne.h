@@ -9,6 +9,7 @@
 #include "EnvironmentRenderer.h"
 #include "Texture.h"
 #include "Terrain.h"
+#include "OrthoSpriteRenderer.h"
 
 namespace GE {
 	class SceneOne : public Scene {
@@ -34,6 +35,10 @@ namespace GE {
 
 		EnvironmentRenderer* environmentRenderer;
 
+		//GUI HUD
+		Texture* checkerTexture;
+		OrthoSpriteRenderer* testSprite;
+		
 		//GameObjects
 		//Ground
 		Model* ground;
