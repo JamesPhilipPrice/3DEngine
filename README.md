@@ -98,3 +98,6 @@ I have implemented a renderer class for sprites so that images can be orthograph
 
 - All Stage three requirements met
 
+## Update 07/05/21
+I have implemented a simple form of lighting in the scene and added some test code to make a nice looking sunset:
+<img src="Documentation_Assets/Lighting.png?raw=true"/>
