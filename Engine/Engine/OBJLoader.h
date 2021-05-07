@@ -16,7 +16,7 @@ namespace AL {
 
 		}
 
-		bool LoadOBJFile(const char* _location, std::vector<std::vector<float>>* _targetVertexContainer, std::vector<std::vector<float>>* _targetUVContainer) {
+		bool LoadOBJFile(const char* _location, std::vector<std::vector<float>>* _targetVertexContainer, std::vector<std::vector<float>>* _targetUVContainer, std::vector<std::vector<float>>* _targetVNContainer) {
 			std::ifstream fileIn(_location);
 
 			if (!fileIn) {
@@ -39,6 +39,7 @@ namespace AL {
 			//Sort through the information in the obj file buffer and place items into buffer lists
 			std::vector<std::vector<float>> vertexBuffer;
 			std::vector<std::vector<float>> vertexUVBuffer;
+			std::vector<std::vector<float>> vertexVNBuffer;
 			std::vector<std::vector<std::vector<int>>> faceBuffer;
 
 			for (int i = 0; i < fileBuffer.size(); i++) {
@@ -66,6 +67,19 @@ namespace AL {
 
 					vertexUVBuffer.push_back(tempUVBuffer);
 				}
+				else if (fileBuffer[i].substr(0, 2) == "vn") {
+					std::vector<float> tempVNBuffer;
+					//Strip away the now redundant information and break down the buffer line into separate floats
+					fileBuffer[i].erase(0, fileBuffer[i].find(" ") + 1);
+					tempVNBuffer.push_back(stof(fileBuffer[i].substr(0, fileBuffer[i].find(" "))));
+					fileBuffer[i].erase(0, fileBuffer[i].find(" ") + 1);
+					tempVNBuffer.push_back(stof(fileBuffer[i].substr(0, fileBuffer[i].find(" "))));
+					fileBuffer[i].erase(0, fileBuffer[i].find(" ") + 1);
+					tempVNBuffer.push_back(stof(fileBuffer[i].substr(0, fileBuffer[i].find(" "))));
+					fileBuffer[i].erase(0, fileBuffer[i].find(" ") + 1);
+
+					vertexVNBuffer.push_back(tempVNBuffer);
+				}
 				else if (fileBuffer[i].substr(0, 2) == "f ") {
 					std::vector<std::vector<int>> tempFaceBuffer;
 					std::vector <int> tempVertPointOne;
@@ -77,11 +91,17 @@ namespace AL {
 					tempVertPointOne.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
 					fileBuffer[i].erase(0, fileBuffer[i].find("/") + 1);
 					tempVertPointOne.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
+					fileBuffer[i].erase(0, fileBuffer[i].find("/") + 1);
+					tempVertPointOne.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
 					fileBuffer[i].erase(0, fileBuffer[i].find(" ") + 1);
 					tempVertPointTwo.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
 					fileBuffer[i].erase(0, fileBuffer[i].find("/") + 1);
 					tempVertPointTwo.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
+					fileBuffer[i].erase(0, fileBuffer[i].find("/") + 1);
+					tempVertPointTwo.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
 					fileBuffer[i].erase(0, fileBuffer[i].find(" ") + 1);
+					tempVertPointThree.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
+					fileBuffer[i].erase(0, fileBuffer[i].find("/") + 1);
 					tempVertPointThree.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
 					fileBuffer[i].erase(0, fileBuffer[i].find("/") + 1);
 					tempVertPointThree.push_back(stoi(fileBuffer[i].substr(0, fileBuffer[i].find("/"))));
@@ -100,6 +120,9 @@ namespace AL {
 				_targetUVContainer->push_back(vertexUVBuffer[faceBuffer[i][0][1]-1]);
 				_targetUVContainer->push_back(vertexUVBuffer[faceBuffer[i][1][1]-1]);
 				_targetUVContainer->push_back(vertexUVBuffer[faceBuffer[i][2][1]-1]);
+				_targetVNContainer->push_back(vertexVNBuffer[faceBuffer[i][0][2]-1]);
+				_targetVNContainer->push_back(vertexVNBuffer[faceBuffer[i][1][2]-1]);
+				_targetVNContainer->push_back(vertexVNBuffer[faceBuffer[i][2][2]-1]);
 			}
 
 			fileBuffer.clear();

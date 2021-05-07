@@ -88,6 +88,7 @@ namespace GE {
 		GLuint programId;
 		GLint vertexPos3DLocation;
 		GLint vertexUVLocation;
+		GLint vertexNormalLocation;
 		GLuint vboModel;
 
 		float posX, posY, posZ;
@@ -98,6 +99,9 @@ namespace GE {
 		GLuint viewUniformID;
 		GLuint projectionUniformID;
 		GLuint samplerID;
+		GLuint lightColID;
+		GLuint lightPosID;
+		GLuint viewPosID;
 
 		Model* model;
 

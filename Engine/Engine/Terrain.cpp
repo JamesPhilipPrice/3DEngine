@@ -15,7 +15,7 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 
 	unsigned char* inputData = (unsigned char*)heightMap->pixels;
 
-	float x, y, z, u, v;
+	float x, y, z, u, v, nx, ny, nz;
 	for (int row = 0; row < height; row++) {
 		for (int collumn = 0; collumn < width; collumn++) {
 			
@@ -31,8 +31,11 @@ GE::Terrain::Terrain(std::string _filename, Texture* _texture, float _scale, flo
 			z = ((float)row / (float)height - 1) * scale;
 			u = ((float)collumn / (float)width - 1);
 			v = ((float)row / (float)height - 1);
-
-			verticies.emplace_back(Vertex(x, y, z, u, v));
+			//Need to fix normal calc
+			nx = 0.0f;
+			ny = 1.0f;
+			nz = 0.0f;
+			verticies.emplace_back(Vertex(x, y, z, u, v, nx, ny, nz));
 		}
 	}
 

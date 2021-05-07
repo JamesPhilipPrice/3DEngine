@@ -21,7 +21,7 @@ namespace GE {
 		float azimuthStep = (2.0f * PI) / (float)(_resolution - 1);
 		float elevationStep = PI / (float)(_resolution - 1);
 
-		float x, y, z, u, v;
+		float x, y, z, u, v, nx, ny, nz;
 		float theta, phi;
 
 		for (int latitude = 0; latitude < _resolution + 1; latitude++) {
@@ -36,7 +36,16 @@ namespace GE {
 				//Calc UV coords
 				u = (float)latitude / (float)_resolution;
 				v = (float)longitude / (float)_resolution;
-				tempVerticies.emplace_back(Vertex(x, y, z, u, v));
+				//Calc normals
+				nx = -x;
+				ny = -y;
+				nz = -z;
+				float mag = sqrt((nx * nx) + (ny * ny) + (nz * nz));
+				float fac = 1 / mag;
+				nx *= fac;
+				ny *= fac; 
+				nz *= fac;
+				tempVerticies.emplace_back(Vertex(x, y, z, u, v, nx, ny, nz));
 			}
 		}
 
