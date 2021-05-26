@@ -29,7 +29,7 @@ namespace GE {
 		testSprite = new OrthoSpriteRenderer(checkerTexture);
 		testSprite->Init();
 
-		//TEST TERRAIN
+		//Terrain
 		terrainMat = new Texture("assets/textures/terrain/SceneOneTerrTex.png");
 		terrainTool = new Terrain("assets/textures/heightmaps/SceneOne.png", terrainMat, 200, 23.2f);
 		terrainModel = new Model(modelLoader);
@@ -38,6 +38,12 @@ namespace GE {
 		terrainRenderer->Init();
 		terrainRenderer->SetMaterial(terrainTool->GetTexture());
 		terrainRenderer->SetPos(100.0f, -3.5f, 100.0f);
+
+		//Water
+		waterMat = new Texture("assets/textures/water.jpg");
+		water = new WaterRenderer(200, 200, 200, -0.2f);
+		water->Init();
+		water->SetMaterial(waterMat);
 
 		//Load house materials
 		houseMatOne = new Texture("assets/textures/HousesONE.jpg");
@@ -163,6 +169,9 @@ namespace GE {
 		//Windmill
 		windmillAngle += windmillFanSpeed * _deltaTime;
 		windmillFan->SetRot(windmillAngle, 0.0f, 0.0f);
+
+		//Water
+		water->AddToGameTime(_deltaTime);
 	}
 
 	void SceneOne::Draw(Camera* _cam)
@@ -170,6 +179,7 @@ namespace GE {
 		skybox->Draw(_cam);
 		//groundRenderer->Draw(_cam);
 		terrainRenderer->Draw(_cam);
+		water->Draw(_cam);
 		houseOneRenderer->Draw(_cam);
 		houseTwoRenderer->Draw(_cam);
 		houseThreeRenderer->Draw(_cam);

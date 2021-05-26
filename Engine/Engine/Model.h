@@ -10,6 +10,8 @@ namespace GE {
 			modelLoader = _loader;
 		}
 
+		Model() {}
+
 		~Model() {
 			delete[] verticies;
 		}

@@ -167,6 +167,7 @@
     <ClInclude Include="Skydome.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="WaterRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnvironmentRenderer.cpp" />
@@ -182,6 +183,7 @@
     <ClCompile Include="Skydome.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="WaterRenderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

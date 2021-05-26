@@ -10,6 +10,7 @@
 #include "Texture.h"
 #include "Terrain.h"
 #include "OrthoSpriteRenderer.h"
+#include "WaterRenderer.h"
 
 namespace GE {
 	class SceneOne : public Scene {
@@ -45,11 +46,15 @@ namespace GE {
 		Texture* groundMat;
 		ModelRenderer* groundRenderer;
 
-		//TESTING TERRAIN
+		//Terrain
 		Texture* terrainMat;
 		Terrain* terrainTool;
 		Model* terrainModel;
 		ModelRenderer* terrainRenderer;
+
+		//Water
+		Texture* waterMat;
+		WaterRenderer* water;
 
 		Texture* houseMatOne;
 		Texture* houseMatTwo;

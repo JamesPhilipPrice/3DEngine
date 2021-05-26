@@ -3,5 +3,5 @@
 \\students.uce.ac.uk\filespace\mb20\tic\S19108410\GitHub\3DEngine\Engine\Engine\Camera.h(64,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
 \\students.uce.ac.uk\filespace\mb20\tic\S19108410\GitHub\3DEngine\Engine\Engine\Camera.h(128,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 \\students.uce.ac.uk\filespace\mb20\tic\S19108410\GitHub\3DEngine\Engine\Engine\Camera.h(132,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-\\students.uce.ac.uk\filespace\mb20\tic\S19108410\GitHub\3DEngine\Engine\Engine\Model.h(24,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+\\students.uce.ac.uk\filespace\mb20\tic\S19108410\GitHub\3DEngine\Engine\Engine\Model.h(26,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Engine.vcxproj -> \\students.uce.ac.uk\filespace\mb20\tic\S19108410\GitHub\3DEngine\Engine\x64\Debug\Engine.exe

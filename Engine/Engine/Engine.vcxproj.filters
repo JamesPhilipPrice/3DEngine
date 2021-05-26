@@ -93,6 +93,9 @@
     <ClInclude Include="OrthoSpriteRenderer.h">
       <Filter>Source Files\Renderers</Filter>
     </ClInclude>
+    <ClInclude Include="WaterRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -132,6 +135,9 @@
       <Filter>Source Files\Environment</Filter>
     </ClCompile>
     <ClCompile Include="OrthoSpriteRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterRenderer.cpp">
       <Filter>Source Files\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
