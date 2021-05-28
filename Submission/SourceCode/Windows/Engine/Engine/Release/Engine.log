@@ -1,0 +1,6 @@
+﻿SkyBoxRenderer.obj : error LNK2001: unresolved external symbol _IMG_Load
+Z:\GitHub\3DEngine\Engine\Release\Engine.exe : fatal error LNK1120: 1 unresolved externals
+FileTracker : error FTK1006: could not write entry to the file tracking log file: Z:\GitHub\3DEngine\Engine\Engine\Release\Engine.tlog\link.read.1.tlog. There is not enough space on the disk.
+  
+  
+  

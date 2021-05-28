@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\MainCode">
+      <UniqueIdentifier>{09cd1dfb-b3e7-4d39-9aa5-4652cc41c89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TestCode">
+      <UniqueIdentifier>{0bddce36-a94f-4ee6-a9f1-cf3497b76b1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visual">
+      <UniqueIdentifier>{a29ba877-d17d-4a91-99a1-78ed63df761f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Loaders">
+      <UniqueIdentifier>{229744d6-249b-4af6-971a-769a298b5434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers">
+      <UniqueIdentifier>{0f3f22e5-14cc-4a55-983d-88adbcdfc457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectComp">
+      <UniqueIdentifier>{5fc8f2a5-bcf5-44a7-87a0-4c6042ce3f74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectComp\Visual">
+      <UniqueIdentifier>{5cfc433d-4b78-427d-b703-c8c1797416ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainCode\SceneManagement">
+      <UniqueIdentifier>{50ebb3cc-43b3-450f-bf23-58e97f66a776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainCode\SceneManagement\Scenes">
+      <UniqueIdentifier>{f88b933e-174f-4d53-bcfb-d1c83a1ceae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Environment">
+      <UniqueIdentifier>{4420fa73-2557-4fee-8076-5a3032f98689}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Source Files\MainCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJLoader.h">
+      <Filter>Source Files\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBoxRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUtility.h">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Source Files\MainCode\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\MainCode\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOne.h">
+      <Filter>Source Files\MainCode\SceneManagement\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryUtils.h">
+      <Filter>Source Files\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="Skydome.h">
+      <Filter>Source Files\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvironmentRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="OrthoSpriteRenderer.h">
+      <Filter>Source Files\Renderers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Source Files\MainCode</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\MainCode</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBoxRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUtility.cpp">
+      <Filter>Source Files\GameObjectComp\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\MainCode\SceneManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOne.cpp">
+      <Filter>Source Files\MainCode\SceneManagement\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Skydome.cpp">
+      <Filter>Source Files\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvironmentRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="OrthoSpriteRenderer.cpp">
+      <Filter>Source Files\Renderers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
