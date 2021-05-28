@@ -89,6 +89,7 @@ namespace GE {
 			//return false to flag a quit event
 			return false;
 		}
+
 		return true;
 	}
 
